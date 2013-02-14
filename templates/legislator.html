@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block meta %}
+	<meta name="viewport" content="width=560">
+{% endblock %}
+
+{% block content %}
+
+    {# {
+        u'birthday': u'1952-11-09',
+        u'contact_form': u'http://www.brown.senate.gov/contact/',
+        u'gender': u'M',
+        u'chamber': u'senate',
+    } #}
+
+    <header>
+    	<p>Congress</p>
+    </header>
+
+    <div class="card">
+
+	    {% if not moc.in_office %}
+	        <div class="alert">No longer in office</div>
+	    {% endif %}
+
+	    <div class="vcard">
+
+	        <img class="photo" src="http://assets.sunlightfoundation.com/moc/200x250/{{ moc.bioguide_id }}.jpg">
+
+	        <h1>
+	            <a class="url fn n" href="{{ moc.website }}">
+	                <span class="honorific-prefix">{{ moc.title }}.</span>
+	                <span class="given-name">{{ moc.first_name }}</span>
+	                {% if moc.nickname %}
+	                    <span class="additional-name">{{ moc.nickname }}</span>
+	                {% endif %}
+	                <span class="family-name">{{ moc.last_name }}</span>
+	                {% if moc.name_suffix %}
+	                    <span class="honorific-suffix">{{ moc.name_suffix }}</span>
+	                {% endif %}
+	            </a>
+	        </h1>
+
+	        <div class="represents">
+		        <span class="party party-{{ moc.party|lower }}">{{ moc.party }}</span>
+		        <span class="state">{{ moc.state_name }}</span>
+		        {% if moc.district %}
+		            - <span class="congressional-district">District {{ moc.district }}</span>
+		        {% endif %}
+		    </div>
+
+		    <dl>
+		    	<dt>Phone</dt>
+		    	<dd>
+	        		<a class="tel" href="tel:{{ moc.phone }}">{{ moc.phone }}</a>
+	        	</dd>
+		        {% if moc.fax %}
+		        	<dt>Fax</dt>
+		            <dd class="fax">{{ moc.fax }}</dd>
+		        {% endif %}
+	    	</dl>
+
+	        <div class="adr">
+	            <span class="street-address">{{ moc.office }}</span>
+	            <span class="locality">Washington</span>,
+	            <abbr class="region" title="District of Columbia">DC</abbr>
+	            <span class="postal-code">20510</span>
+	        </div>
+
+	        <div class="social">
+
+			    {% if moc.twitter_id %}
+			        <a title="Twitter" href="https://twitter.com/{{ moc.twitter_id }}" class="ss-icon">twitter</a>
+			    {% endif %}
+
+			    {% if moc.facebook_id %}
+			        <a title="Facebook" href="https://www.facebook.com/{{ moc.facebook_id }}" class="ss-icon">facebook</a>
+			    {% endif %}
+
+			    {% if moc.youtube_id %}
+			        <a title="YouTube" href="http://www.youtube.com/{{ moc.youtube_id }}" class="ss-icon">youtube</a>
+			    {% endif %}
+
+			    {#
+			    {% if moc.govtrack_id %}
+			        <a href="http://www.govtrack.us/congress/members//{{ moc.govtrack_id }}">GovTrack</a>
+			    {% endif %}
+			    #}
+
+			</div>
+
+	    </div>
+
+	</div>
+
+	<footer>
+		<a href="#">Download iOS</a>
+		<a href="#">Download Android</a>
+	</footer>
+
+{% endblock %}
