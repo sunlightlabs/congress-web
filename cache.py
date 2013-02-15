@@ -3,7 +3,7 @@ class Memcached(object):
     def __init__(self, servers, username=None, password=None, timeout=0):
 
         import pylibmc
-        self.conn = pylibmc.Client(servers, username=username, password=password)
+        self.conn = pylibmc.Client(servers, binary=True, username=username, password=password)
         self.timeout = timeout
 
     def __getitem__(self, key):
