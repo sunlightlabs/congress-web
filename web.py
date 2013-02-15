@@ -6,10 +6,12 @@ import requests
 
 from cache import Dummycached, Memcached
 
-try:
-    import settings
-except ImportError:
-    pass  # no local settings found, just ignore
+
+#
+# the app
+#
+
+app = Flask(__name__)
 
 
 # app store URLs
@@ -20,20 +22,17 @@ IOS_URL = "http://sunlightfoundation.com"
 
 # load environment variables
 
-CONGRESS_KEY = environ.get("SUNLIGHT_KEY")
+app.config['SUNLIGHT_KEY'] = environ.get("SUNLIGHT_KEY")
 
-MEMCACHED_SERVERS = environ.get("MEMCACHIER_SERVERS")
-MEMCACHED_USERNAME = environ.get("MEMCACHIER_USERNAME")
-MEMCACHED_PASSWORD = environ.get("MEMCACHIER_PASSWORD")
+app.config['MEMCACHED_SERVERS'] = environ.get('MEMCACHIER_SERVERS')
+app.config['MEMCACHED_USERNAME'] = environ.get('MEMCACHIER_USERNAME')
+app.config['MEMCACHED_PASSWORD'] = environ.get('MEMCACHIER_PASSWORD')
 
-if MEMCACHED_SERVERS:
-    cache = Memcached(
-        MEMCACHED_SERVERS,
-        MEMCACHED_USERNAME,
-        MEMCACHED_PASSWORD,
-        timeout=300)
-else:
-    cache = Dummycached()
+try:
+    # try to load local settings from settings.py
+    app.config.from_object('settings')
+except ImportError:
+    pass  # no worries, CONTINUE!
 
 
 # other constants
@@ -42,11 +41,16 @@ BILL_TYPES = ("hr", "hres", "hjres", "hconres", "s", "sres", "sjres", "sconres")
 BILL_ID_RE = re.compile(r"(?P<type>[a-z]+)(?P<number>\d+)(?:-(?P<session>\d+))?")
 
 
-#
-# the app
-#
+# set up cache
 
-app = Flask(__name__)
+if app.config.get('MEMCACHED_SERVERS'):
+    cache = Memcached(
+        app.config['MEMCACHED_SERVERS'].split(','),
+        app.config['MEMCACHED_USERNAME'],
+        app.config['MEMCACHED_PASSWORD'],
+        timeout=10)
+else:
+    cache = Dummycached()
 
 
 #
@@ -79,8 +83,10 @@ def legislator(bioguide_id):
 
     if not moc:
 
+        app.logger.debug('bioguide_id cache miss: %s' % bioguide_id)
+
         params = {
-            'apikey': CONGRESS_KEY,
+            'apikey': app.config['SUNLIGHT_KEY'],
             'bioguide_id': bioguide_id,
         }
 
@@ -121,8 +127,20 @@ def bill_id(bill_id):
 
 
 #
+# debug views
+#
+
+if app.debug:
+
+    @app.route('/config')
+    def configuration():
+        items = "\n".join("<dt>%s</dt><dd>%s</dd>" % (k, v) for k, v in app.config.items())
+        return "<dl>%s</dl>" % items
+
+
+#
 # cli
 #
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8000, host="0.0.0.0")
+    app.run(port=8000, host="0.0.0.0")
