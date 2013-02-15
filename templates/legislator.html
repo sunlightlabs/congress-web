@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block meta %}
+
 	<meta name="viewport" content="width=560">
 
 	<meta property="og:site_name" content="Congress for Android and iOS">
@@ -13,6 +14,14 @@
 	<meta property="og:image" content="http://assets.sunlightfoundation.com/moc/200x250/{{ moc.bioguide_id }}.jpg">
 	<meta property="og:locale" content="en_US">
 	<meta property="fb:admins" content="7812952">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:url" content="http://cngr.es/l/{{ moc.bioguide_id }}">
+	<meta name="twitter:title" content="{{ moc.title }}. {{ moc.first_name }} {% if moc.nickname %}'{{ moc.nickname }}' {% endif %}{{ moc.last_name }}{% if moc.name_suffix %} {{ moc.name_suffix }}{% endif %} ({{ moc.party }}-{{ moc.state }})">
+	<meta name="twitter:description" content="Find out more about {{ moc.title }}. {{ moc.last_name }} with Congress for Android and iOS.">
+	<meta name="twitter:image" content="http://assets.sunlightfoundation.com/moc/200x250/{{ moc.bioguide_id }}.jpg">
+	<meta name="twitter:site" content="@sunfoundation">
+
 {% endblock %}
 
 {% block title %}{{ moc.title }}. {{ moc.first_name }} {% if moc.nickname %}'{{ moc.nickname }}' {% endif %}{{ moc.last_name }}{% if moc.name_suffix %} {{ moc.name_suffix }}{% endif %} ({{ moc.party }}-{{ moc.state }}) - {{ super() }}{% endblock %}
