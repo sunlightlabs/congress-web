@@ -1,16 +1,16 @@
 class Memcached(object):
 
-    def __init__(self, servers, username, password, timeout=None):
+    def __init__(self, servers, username, password, timeout=0):
 
         import pylibmc
         self.conn = pylibmc.Client(servers, username=username, password=password)
-        self.timeout = None
+        self.timeout = timeout
 
     def __getitem__(self, key):
-        pass
+        return self.conn.get(key)
 
     def __setitem__(self, key, value):
-        pass
+        self.conn.set(key, value, time=self.timeout)
 
 
 class Dummycached(object):

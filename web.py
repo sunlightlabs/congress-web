@@ -11,10 +11,12 @@ try:
 except ImportError:
     pass  # no local settings found, just ignore
 
+
 # app store URLs
 
 ANDROID_URL = "https://play.google.com/store/apps/details?id=com.sunlightlabs.android.congress&hl=en"
 IOS_URL = "http://sunlightfoundation.com"
+
 
 # load environment variables
 
@@ -33,10 +35,12 @@ if MEMCACHED_SERVERS:
 else:
     cache = Dummycached()
 
+
 # other constants
 
 BILL_TYPES = ("hr", "hres", "hjres", "hconres", "s", "sres", "sjres", "sconres")
-BILL_ID_RE = re.compile(r"(?P<bill_type>[a-z]+)(?P<number>\d+)(?:-(?P<session>\d+))?")
+BILL_ID_RE = re.compile(r"(?P<type>[a-z]+)(?P<number>\d+)(?:-(?P<session>\d+))?")
+
 
 #
 # the app
@@ -112,9 +116,8 @@ def bill_id(bill_id):
         return redirect('/')
 
     (bill_type, number, session) = match.groups()
-    url = "http://www.govtrack.us/congress/bills/%s/%s%s" % (session, bill_type, number)
-
-    return redirect(url)
+    url = "http://www.govtrack.us/congress/bills/%s/%s%s"
+    return redirect(url % (session, bill_type, number))
 
 
 #
