@@ -2,7 +2,20 @@
 
 {% block meta %}
 	<meta name="viewport" content="width=560">
+
+	<meta property="og:site_name" content="Congress for Android and iOS">
+	<meta property="og:title" content="{{ moc.title }}. {{ moc.first_name }} {% if moc.nickname %}'{{ moc.nickname }}' {% endif %}{{ moc.last_name }}{% if moc.name_suffix %} {{ moc.name_suffix }}{% endif %} ({{ moc.party }}-{{ moc.state }})">
+	<meta property="og:description" content="Find out more about {{ moc.title }}. {{ moc.last_name }} with Congress for Android and iOS.">
+	<meta property="og:type" content="profile">
+	<meta property="og:profile:first_name" content="{{ moc.first_name }}">
+	<meta property="og:profile:last_name" content="{{ moc.last_name }}">
+	<meta property="og:url" content="http://cngr.es/l/{{ moc.bioguide_id }}">
+	<meta property="og:image" content="http://assets.sunlightfoundation.com/moc/200x250/{{ moc.bioguide_id }}.jpg">
+	<meta property="og:locale" content="en_US">
+	<meta property="fb:admins" content="7812952">
 {% endblock %}
+
+{% block title %}{{ moc.title }}. {{ moc.first_name }} {% if moc.nickname %}'{{ moc.nickname }}' {% endif %}{{ moc.last_name }}{% if moc.name_suffix %} {{ moc.name_suffix }}{% endif %} ({{ moc.party }}-{{ moc.state }}) - {{ super() }}{% endblock %}
 
 {% block content %}
 
