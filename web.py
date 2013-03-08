@@ -38,8 +38,8 @@ except ImportError:
 # other constants
 
 BILL_TYPES = ("hr", "hres", "hjres", "hconres", "s", "sres", "sjres", "sconres")
-BILL_ID_RE = re.compile(r"(?P<type>[a-z]+)(?P<number>\d+)(?:-(?P<session>\d+))?")
-
+BILL_ID_RE = re.compile(r"^(?P<type>[a-z]+)(?P<number>\d+)-(?P<session>\d+)$")
+VOTE_ID_RE = re.compile(r"^(?P<chamber>[sh])(?P<number>\d+)-(?P<year>\d{4})$")
 
 # set up cache
 
@@ -112,7 +112,6 @@ def legislator(bioguide_id):
 # bills
 #
 
-
 @app.route('/b/<bill_id>')
 def bill_id(bill_id):
 
@@ -124,6 +123,25 @@ def bill_id(bill_id):
     (bill_type, number, session) = match.groups()
     url = "http://www.govtrack.us/congress/bills/%s/%s%s"
     return redirect(url % (session, bill_type, number))
+
+
+#
+# votes
+#
+
+@app.route('/v/<vote_id>')
+def vote_id(vote_id):
+
+    match = VOTE_ID_RE.match(vote_id)
+
+    if not match:
+        return redirect('/')
+
+    (chamber, number, year) = match.groups()
+    session = ((int(year) + 1) / 2) - 894
+
+    url = "http://www.govtrack.us/congress/votes/%s-%s/%s%s"
+    return redirect(url % (session, year, chamber, number))
 
 
 #
