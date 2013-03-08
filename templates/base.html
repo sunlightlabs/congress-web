@@ -6,7 +6,9 @@
         <title>{% block title %}Congress for Android and iOS{% endblock %}</title>
         <style>
 
-        	a { color: #466; text-decoration: none; }
+
+
+        	a { color: #24c; }
 
             body {
                 background-color: #f4f6ec;
@@ -24,7 +26,7 @@
             .card {
             	border: 1px solid #ccc;
             	background-color: #fff;
-            	height: 247px;
+            	height: 320px;
             	margin: 0 auto;
             	padding: 10px;
             	position: relative;
@@ -45,7 +47,7 @@
             	width: 150px;
             	top: -1px;
             	left: -1px;
-            	padding-bottom: 80px;
+            	padding-bottom: 153px;
             	position: absolute;
             	-webkit-border-radius: 5px 0 0 5px;
             	   -moz-border-radius: 5px 0 0 5px;
@@ -63,14 +65,14 @@
             .vcard .additional-name:before { content: '"'; }
             .vcard .additional-name:after { content: '"'; }
 
-            .vcard dl { line-height: 130%; }
+            .vcard dl { line-height: 160%; }
             .vcard dt {
             	display: block;
             	float: left;
             	font-family: "prenton-condensed";
             	font-size: 90%;
             	text-transform: uppercase;
-            	width: 51px;
+            	width: 80px;
             }
 
             .vcard .party {
@@ -96,7 +98,22 @@
             	font-size: 160%;
             	margin-top: 20px;
             }
-            .vcard .social a { margin-right: 10px; }
+            .vcard .social a {
+            	display: block;
+            	float: left;
+            	margin-right: 10px;
+            	text-indent: -9999px;
+            	width: 32px;
+            	height: 32px;
+            }
+            .vcard .social a.twitter { background: url(/static/icons/twitter.png) top left no-repeat; }
+            .vcard .social a.facebook { background: url(/static/icons/facebook.png) top left no-repeat; }
+            .vcard .social a.youtube { background: url(/static/icons/youtube.png) top left no-repeat; }
+
+            .profiles {
+            	clear: both;
+            	margin: 20px 0 0 0;
+            }
 
             footer {
             	margin: 50px auto 20px;
@@ -109,7 +126,12 @@
         <script>try{Typekit.load();}catch(e){}</script>
     </head>
     <body>
-        {% block content %}
-        {% endblock %}
+        {% block content %}{% endblock %}
+		<footer>
+			<a href="https://play.google.com/store/apps/details?id=com.sunlightlabs.android.congress">
+			  <img alt="Android app on Google Play"
+			       src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
+			</a>
+		</footer>
     </body>
 </html>

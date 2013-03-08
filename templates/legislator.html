@@ -28,13 +28,6 @@
 
 {% block content %}
 
-    {# {
-        u'birthday': u'1952-11-09',
-        u'contact_form': u'http://www.brown.senate.gov/contact/',
-        u'gender': u'M',
-        u'chamber': u'senate',
-    } #}
-
     <header>
     	<p>Congress</p>
     </header>
@@ -92,32 +85,45 @@
 	        <div class="social">
 
 			    {% if moc.twitter_id %}
-			        <a title="Twitter" href="https://twitter.com/{{ moc.twitter_id }}">twitter</a>
+			        <a class="twitter" title="Twitter" href="https://twitter.com/{{ moc.twitter_id }}">twitter</a>
 			    {% endif %}
 
 			    {% if moc.facebook_id %}
-			        <a title="Facebook" href="https://www.facebook.com/{{ moc.facebook_id }}">facebook</a>
+			        <a class="facebook" title="Facebook" href="https://www.facebook.com/{{ moc.facebook_id }}">facebook</a>
 			    {% endif %}
 
 			    {% if moc.youtube_id %}
-			        <a title="YouTube" href="http://www.youtube.com/{{ moc.youtube_id }}">youtube</a>
+			        <a class="youtube" title="YouTube" href="http://www.youtube.com/{{ moc.youtube_id }}">youtube</a>
 			    {% endif %}
 
-			    {#
-			    {% if moc.govtrack_id %}
-			        <a href="http://www.govtrack.us/congress/members//{{ moc.govtrack_id }}">GovTrack</a>
-			    {% endif %}
-			    #}
+			    <div style="clear: both;"></div>
 
 			</div>
+
+
+			<div class="profiles">
+
+				<dl>
+			    	{% if moc.govtrack_id %}
+						<dt>Votes</dt>
+						<dd>
+							<a href="http://www.opencongress.org/people/show/{{ moc.govtrack_id }}">OpenCongress</a>
+							and
+				        	<a href="http://www.govtrack.us/congress/members/cngres/{{ moc.govtrack_id }}">GovTrack</a>
+				        </dd>
+				    {% endif %}
+				    {% if moc.influenceexplorer_id %}
+			        	<dt>Fundraising</dt>
+			        	<dd>
+			        		<a href="http://influenceexplorer.com/entity/{{ moc.influenceexplorer_id }}/">Influence Explorer</a>
+			        	</dd>
+			        {% endif %}
+			    </dl>
+
+			</ul>
 
 	    </div>
 
 	</div>
-
-	<footer>
-		<a href="#">Download iOS</a>
-		<a href="#">Download Android</a>
-	</footer>
 
 {% endblock %}

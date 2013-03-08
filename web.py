@@ -6,6 +6,8 @@ import requests
 
 from cache import Dummycached, Memcached
 
+COMPROMISE_MORALS = True
+
 
 #
 # the app
@@ -53,13 +55,65 @@ else:
     cache = Dummycached()
 
 
+# data loading methods
+
+def load_legislator(bioguide_id):
+
+    moc = cache[bioguide_id]
+
+    if not moc:
+
+        app.logger.debug('bioguide_id cache miss: %s' % bioguide_id)
+
+        session = requests.session()
+        session.headers = {'User-Agent': 'congress-web'}
+
+        params = {
+            'apikey': app.config['SUNLIGHT_KEY'],
+            'bioguide_id': bioguide_id,
+        }
+
+        # load from Sunlight API
+
+        url = "http://congress.api.sunlightfoundation.com/legislators"
+        resp = session.get(url, params=params)
+
+        if resp.status_code != 200:
+            abort(resp.status_code)
+
+        data = resp.json()
+
+        if 'results' not in data or not data['results']:
+            abort(404)
+
+        moc = data['results'][0]
+
+        # load Influence Explorer ID
+
+        url = "http://transparencydata.com/api/1.0/entities/id_lookup.json"
+        resp = session.get(url, params=params)
+
+        if resp.status_code == 200:
+            data = resp.json()
+            if data:
+                moc['influenceexplorer_id'] = data[0]['id']
+
+        cache[bioguide_id] = moc
+
+    return moc
+
+
+def load_vote(vote_id):
+    pass
+
+
 #
 # basic templates and redirects
 #
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return android()
 
 
 @app.route('/android')
@@ -78,33 +132,7 @@ def ios():
 
 @app.route('/l/<bioguide_id>')
 def legislator(bioguide_id):
-
-    moc = cache[bioguide_id]
-
-    if not moc:
-
-        app.logger.debug('bioguide_id cache miss: %s' % bioguide_id)
-
-        params = {
-            'apikey': app.config['SUNLIGHT_KEY'],
-            'bioguide_id': bioguide_id,
-        }
-
-        url = "http://congress.api.sunlightfoundation.com/legislators"
-
-        resp = requests.get(url, params=params)
-
-        if resp.status_code != 200:
-            abort(resp.status_code)
-
-        data = resp.json()
-
-        if 'results' not in data or not data['results']:
-            abort(404)
-
-        moc = data['results'][0]
-        cache[bioguide_id] = moc
-
+    moc = load_legislator(bioguide_id)
     return render_template("legislator.html", moc=moc)
 
 
@@ -121,8 +149,11 @@ def bill_id(bill_id):
         return redirect('/')
 
     (bill_type, number, session) = match.groups()
-    url = "http://www.govtrack.us/congress/bills/%s/%s%s"
-    return redirect(url % (session, bill_type, number))
+
+    govtrack_url = "http://www.govtrack.us/congress/bills/%s/%s%s" % (session, bill_type, number)
+    opencongress_url = "http://www.opencongress.org/bill/%s-%s%s/show" % (session, bill_type, number)
+
+    return redirect(opencongress_url if COMPROMISE_MORALS else govtrack_url)
 
 
 #
@@ -140,8 +171,10 @@ def vote_id(vote_id):
     (chamber, number, year) = match.groups()
     session = ((int(year) + 1) / 2) - 894
 
-    url = "http://www.govtrack.us/congress/votes/%s-%s/%s%s"
-    return redirect(url % (session, year, chamber, number))
+    govtrack_url = "http://www.govtrack.us/congress/votes/%s-%s/%s%s" % (session, year, chamber, number)
+    opencongress_url = "http://www.opencongress.org/vote/%s/%s/%s" % (year, chamber, number)
+
+    return redirect(opencongress_url if COMPROMISE_MORALS else govtrack_url)
 
 
 #
