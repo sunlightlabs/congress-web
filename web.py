@@ -140,6 +140,10 @@ def legislator(bioguide_id):
 # bills
 #
 
+def opencongress_bill_type(bill_type):
+    return 'h' if bill_type == 'hr' else bill_type
+
+
 @app.route('/b/<bill_id>')
 def bill_id(bill_id):
 
@@ -151,7 +155,7 @@ def bill_id(bill_id):
     (bill_type, number, session) = match.groups()
 
     govtrack_url = "http://www.govtrack.us/congress/bills/%s/%s%s" % (session, bill_type, number)
-    opencongress_url = "http://www.opencongress.org/bill/%s-%s%s/show" % (session, bill_type, number)
+    opencongress_url = "http://www.opencongress.org/bill/%s-%s%s/show" % (session, opencongress_bill_type(bill_type), number)
 
     return redirect(opencongress_url if COMPROMISE_MORALS else govtrack_url)
 
