@@ -54,19 +54,23 @@ if app.config.get('MEMCACHED_SERVERS'):
 else:
     cache = Dummycached()
 
+# setup requests
+
+http = requests.Session()
+http.headers = {'User-Agent': 'congress-web'}
+
 
 # data loading methods
 
 def load_legislator(bioguide_id):
 
-    moc = cache[bioguide_id]
+    key = "legislator:%s" % bioguide_id
+
+    moc = cache[key]
 
     if not moc:
 
         app.logger.debug('bioguide_id cache miss: %s' % bioguide_id)
-
-        session = requests.session()
-        session.headers = {'User-Agent': 'congress-web'}
 
         params = {
             'apikey': app.config['SUNLIGHT_KEY'],
@@ -76,7 +80,7 @@ def load_legislator(bioguide_id):
         # load from Sunlight API
 
         url = "http://congress.api.sunlightfoundation.com/legislators"
-        resp = session.get(url, params=params)
+        resp = http.get(url, params=params)
 
         if resp.status_code != 200:
             abort(resp.status_code)
@@ -91,20 +95,84 @@ def load_legislator(bioguide_id):
         # load Influence Explorer ID
 
         url = "http://transparencydata.com/api/1.0/entities/id_lookup.json"
-        resp = session.get(url, params=params)
+        resp = http.get(url, params=params)
 
         if resp.status_code == 200:
             data = resp.json()
             if data:
                 moc['influenceexplorer_id'] = data[0]['id']
 
-        cache[bioguide_id] = moc
+        cache[key] = moc
 
     return moc
 
 
+def load_bill(bill_id):
+
+    key = "bill:%s" % bill_id
+
+    bill = cache[key]
+
+    if not bill:
+
+        app.logger.debug('bill_id cache miss: %s' % bill_id)
+
+        params = {
+            'apikey': app.config['SUNLIGHT_KEY'],
+            'bill_id': bill_id,
+        }
+
+        # load from Sunlight API
+
+        url = "http://congress.api.sunlightfoundation.com/bills"
+        resp = http.get(url, params=params)
+
+        if resp.status_code != 200:
+            abort(resp.status_code)
+
+        data = resp.json()
+
+        if 'results' not in data or not data['results']:
+            abort(404)
+
+        bill = data['results'][0]
+        cache[key] = bill
+
+    return bill
+
+
 def load_vote(vote_id):
-    pass
+
+    key = "vote:%s" % vote_id
+
+    vote = cache[key]
+
+    if not vote:
+
+        app.logger.debug('vote_id cache miss: %s' % vote_id)
+
+        params = {
+            'apikey': app.config['SUNLIGHT_KEY'],
+            'vote_id': vote_id,
+        }
+
+        # load from Sunlight API
+
+        url = "http://congress.api.sunlightfoundation.com/votes"
+        resp = http.get(url, params=params)
+
+        if resp.status_code != 200:
+            abort(resp.status_code)
+
+        data = resp.json()
+
+        if 'results' not in data or not data['results']:
+            abort(404)
+
+        vote = data['results'][0]
+        cache[key] = vote
+
+    return vote
 
 
 #
@@ -146,18 +214,10 @@ def opencongress_bill_type(bill_type):
 
 @app.route('/b/<bill_id>')
 def bill_id(bill_id):
-
-    match = BILL_ID_RE.match(bill_id)
-
-    if not match:
-        return redirect('/')
-
-    (bill_type, number, session) = match.groups()
-
-    govtrack_url = "http://www.govtrack.us/congress/bills/%s/%s%s" % (session, bill_type, number)
-    opencongress_url = "http://www.opencongress.org/bill/%s-%s%s/show" % (session, opencongress_bill_type(bill_type), number)
-
-    return redirect(opencongress_url if COMPROMISE_MORALS else govtrack_url)
+    bill = load_bill(bill_id)
+    provider = 'opencongress' if COMPROMISE_MORALS else 'govtrack'
+    url = bill['urls'].get(provider, '/')
+    return redirect(url)
 
 
 #
