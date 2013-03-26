@@ -3,3 +3,4 @@ requests==1.1.0
 pylibmc==1.2.3
 gunicorn==0.17.2
 gevent==0.13.8
+httpagentparser==1.2.2
