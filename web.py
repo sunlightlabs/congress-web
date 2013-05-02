@@ -211,14 +211,22 @@ def legislator(bioguide_id):
 def opencongress_bill_type(bill_type):
     return 'h' if bill_type == 'hr' else bill_type
 
+def bill_url(bill_id):
+    bill = load_bill(bill_id)
+    provider = 'opencongress' if COMPROMISE_MORALS else 'govtrack'
+    return bill['urls'].get(provider, '/')
+
 
 @app.route('/b/<bill_id>')
 def bill_id(bill_id):
-    bill = load_bill(bill_id)
-    provider = 'opencongress' if COMPROMISE_MORALS else 'govtrack'
-    url = bill['urls'].get(provider, '/')
+    url = bill_url(bill_id)
     return redirect(url)
 
+
+@app.route('/b/<bill_id>/text')
+def bill_fulltext(bill_id):
+    url = re.sub(r'/show/?$', '', bill_url(bill_id))
+    return redirect('{0}/text'.format(url))
 
 #
 # votes
