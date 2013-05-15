@@ -211,7 +211,7 @@ def index():
         return ios()
     elif g.is_android:
         return android()
-    return ""
+    return redirect(WEB_URL)
 
 
 @app.route('/android')
