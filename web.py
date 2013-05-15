@@ -1,7 +1,8 @@
 from os import environ
 import re
 
-from flask import Flask, abort, redirect, render_template
+from flask import Flask, abort, g, redirect, render_template, request
+import httpagentparser
 import requests
 
 from cache import Dummycached, Memcached
@@ -19,7 +20,8 @@ app = Flask(__name__)
 # app store URLs
 
 ANDROID_URL = "https://play.google.com/store/apps/details?id=com.sunlightlabs.android.congress&hl=en"
-IOS_URL = "http://sunlightfoundation.com"
+IOS_URL = "http://itunes.com/apps/Sitegeist"
+WEB_URL = "http://sunlightfoundation.com/projects/congress-for-android/"
 
 
 # load environment variables
@@ -176,12 +178,40 @@ def load_vote(vote_id):
 
 
 #
+# request lifecycle
+#
+
+def is_ios(agent):
+    if 'dist' in agent:
+        return agent['dist']['name'] in ('iPad', 'iPhone')
+    return False
+
+
+def is_android(agent):
+    if 'dist' in agent:
+        return agent['dist']['name'] == 'Android'
+    return False
+
+
+@app.before_request
+def before_request():
+    ua = request.headers.get('User-Agent', '')
+    agent = httpagentparser.detect(ua)
+    g.is_ios = is_ios(agent)
+    g.is_android = is_android(agent)
+
+
+#
 # basic templates and redirects
 #
 
 @app.route('/')
 def index():
-    return android()
+    if g.is_ios:
+        return ios()
+    elif g.is_android:
+        return android()
+    return ""
 
 
 @app.route('/android')
