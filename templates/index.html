@@ -1,1 +1,182 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        {% block meta %}{% endblock %}
+        <title>{% block title %}Congress for Android{% endblock %}</title>
+        <script src="//use.typekit.net/iev5bqv.js"></script>
+        <script>try{Typekit.load();}catch(e){}</script>
+
+		<link type="text/css" rel="stylesheet" href="/static/css/bootstrap.css">
+		<link type="text/css" rel="stylesheet" href="/static/css/sfapp.css">
+		<link type="text/css" rel="stylesheet" href="/static/css/congress.css">
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script src="/static/js/switcher.js"></script>
+    </head>
+	<body>
+		<div class="sf-header">
+			<div class="container">
+				<a class="sf-logo" href="http://www.sunlightfoundation.com">Sunlight Foundation</a>
+			</div>
+		</div>
+		<div class="congress-wrapper">
+			<div class="container">
+				<img src="/static/img/bg_congress.png">
+			</div>
+			<div class="app-intro">
+				<div class="app-intro-border">
+					<div class="container">
+						<div class="row">
+							<div class="mobile-preview span5">	
+								<div id="iphone">
+									<div class="scroll">
+										<img src="/static/img/iphone_menu.jpg">
+									</div>
+								</div>
+								<div id="android">
+									<div class="scroll">
+										<img src="/static/img/android_main.png">
+									</div>
+								</div>
+								<div id="switcher" class="iphone">
+									<a id="switchButton1" class="active" href="/static/img/iphone_menu.jpg">Page 1</a>
+									<a id="switchButton2" href="/static/img/iphone_list.jpg">Page 2</a>
+									<a id="switchButton3" href="/static/img/iphone_legislator.jpg">Page 3</a>
+									<a id="switchButton4" href="/static/img/iphone_bill.jpg">Page 4</a>
+								</div>
+								<div id="switcher" class="android">
+									<a id="switchButton1" class="active" href="/static/img/android_main.png">Page 1</a>
+									<a id="switchButton2" href="/static/img/android_bill.png">Page 2</a>
+									<a id="switchButton3" href="/static/img/android_hearings.png">Page 3</a>
+								</div>
+							</div>
+							<div class="title span7">
+								<h2 class="custom">Congress</h2>
+								<h3>Now available on your iOS or Android device.</h3>
+								<a href="" class="android available"></a>
+								<a href="" class="ios available"></a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="social span1">
+							</div>
+							<div class="callout span4">
+								<p>
+									<em>Congress</em> is a free directory that allows you to quickly get the latest information from Washington.
+								</p>
+							</div>
+							<div class="description span7">
+								<p>Learn more about your member of Congress, get in touch with them and see what they're up to. Follow the latest bills, see floor activity and explore votes from the palm of your hand.
+								</p>
+								<p>
+								The Congress apps are built on data from official sources via the <a href="http://sunlightlabs.github.io/congress/">Sunlight Congress API</a>. Both apps are open source and developers can play with the code on Github for both the <a href="https://github.com/sunlightlabs/congress-android">Android</a> and <a href="https://github.com/sunlightlabs/congress-ios">iOS</a> versions.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="comparison">
+				<div class="container">
+					<h2 class="or"><span>Or</span></h2>
+					<div class="row">
+						<div class="device android span6">
+							<h2><img src="/static/img/icon_android.png">Android</h2>
+							<h3>Features</h3>
+							<ul>
+								<li>Read the latest bills and laws, and see how the votes were cast.</li>
+								<li>Find and call your members of Congress by using your phone's location or zipcode, as well as the lawmaker’s last name, a state or committee membership.</li>
+								<li>See what's happening on the House floor.</li>
+								<li>Keep on top of upcoming committee hearings.</li>
+								<li>Real-time notifications of votes, laws, floor activity and other congressional activities.</li>
+								<li>View your lawmakers' latest votes, committee memberships or a map of their district.</li>
+								<li>Read tweets and watch videos from lawmakers' Twitter and YouTube accounts or follow them in the news.</li>
+								<li>Easily share interesting bills across your social networks.</li>
+								<li>Add favorite lawmakers or bills to your dashboard or create shortcuts on your Android home screen.</li>
+							</ul>
+							<h3>Reviews</h3>
+							<figure>
+								<blockquote cite="http://androidandme.com/2010/05/applications/congress-for-android-social-activism-just-got-a-bit-more-mobile/">
+									<p>
+										Final Verdict: Yes, I’m skipping over the pros and cons mostly because I think this app is absolutely fantastic. If you’re an activist or are simply interested in political issues, you owe it to yourself and, dare I say it, your country, to download this app.
+									</p>
+								</blockquote>
+								<figcaption><a href="http://androidandme.com/2010/05/applications/congress-for-android-social-activism-just-got-a-bit-more-mobile/">Android and Me</a></figcaption>
+							</figure>
+							<figure>
+								<blockquote cite="http://www.androidtapp.com/congress/">
+									<p>
+										This application is very useful and informative, in today’s society understanding and staying aware of what our elected officials are doing is very vital. If you’re the type of person who is concerned or just curious to see what’s going on with Capitol Hill then this is the app for you!
+									</p>
+								</blockquote>
+								<figcaption><a href="http://www.androidtapp.com/congress/">Android Tapp</a></figcaption>
+							</figure>
+							<figure>
+								<blockquote cite="http://blog.richardposey.com/2010/05/congress-in-palm-of-my-hand.html">
+									<p>
+										With this kind of information in our hands, mobile applications like Congress could signal the beginning of a new era of citizen interest and participation in government, too. I hope so. Thanks, Sunlight Labs, for producing this.
+									</p>
+								</blockquote>
+								<figcaption><a href="http://blog.richardposey.com/2010/05/congress-in-palm-of-my-hand.html">Richard Posey</a></figcaption>
+							</figure>
+							<a href="" class="android available"></a>
+						</div>
+						<div class="device ios span6">
+							<h2><img src="/static/img/icon_iphone.png">iPHONE</h2>
+							<h3>Features</h3>
+							<ul>
+								<li>Find lawmakers in Congress, call them directly or connect with them on social media.</li>
+								<li>Explore the latest and most active legislation in a tap.</li>
+								<li>See a legislator's district map, D.C. office address and more.</li>
+								<li>Star bills and legislators for quick access and updates.</li>
+								<li>See bill activity details with vote breakdowns.</li>
+							</ul>
+							<h4>Features coming soon</h4>
+							<ul>
+								<li>Committee listings</li>
+								<li>Floor updates</li>
+								<li>Legislator vote updates</li>
+								<li>Push notifications</li>
+								<li>Calendar of scheduled hearings</li>
+							</ul>
+							<h3>iOS Reviews Coming Soon! <small>Launched in June 2013</small></h3>
+							<a href="" class="ios available"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="featured-on">
+				<div class="container">
+					<h2>Featured<em>On</em></h2>
+					<ul>
+						<li><a href="http://www.computerworld.com/s/article/9178832/10_free_Android_apps_for_staying_in_the_know" class="computerworld"><img src="/static/img/featured-on_computerworld.png"></a></li>
+						<li><a href="http://www.androidcentral.com/android-central-editors-app-picks-sept-2nd-2010" class="androidcentral"><img src="/static/img/featured-on_androidcentral.png"></a></li>
+						<li><a href="http://gizmodo.com/5597483/congress-app-puts-legislative-branch-on-your-android" class="gizmodo"><img src="/static/img/featured-on_gizmodo.png"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="sf-footerWrapper">
+		    <div class="sf-footer container">
+		        <div class="row">
+		            <div class="span6 signup span-divider">
+		                <h4>Like this Project and Want to Discover Others Like It?</h4>
+		                <span class="tip">Join the Sunlight Foundation's open government community to learn more</span>
+		                <form action="/subscribe/" method="post" id="sfapp-subscribe-form" class="form-inline">
+		                    <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='n7KUIRoAfnnYQgkgfbJgqwBFc8DTRpow' /></div>
+		                    <input type="hidden" name="response" value="json">
+		                    <input type="text" name="email" placeholder="your email address">
+		                    <input type="text" name="zipcode" placeholder="your zip code">
+		                    <button type="submit" class="btn btn-sunlight">Sign Up</button>
+		                </form>
+		            </div>
+		            <div class="span6 terms">
+		                <p>Our <a href="http://sunlightfoundation.com/legal/privacy/">privacy policy</a> details how personally identifiable information that is collected on our web sites is handled. Read our <a href="http://sunlightfoundation.com/legal/terms/">terms of service</a>.</p>
+		                <p>This work by <a href="http://sunlightfoundation.com">Sunlight Foundation</a>, unless <a href="http://sunlightfoundation.com/colophon/">otherwise noted</a>, is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 United States License</a>.</p>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</body>
+</html>
