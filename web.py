@@ -2,12 +2,12 @@ from os import environ
 import re
 
 from flask import Flask, abort, g, redirect, render_template, request
-import httpagentparser
+# import httpagentparser
 import requests
 
 from cache import Dummycached, Memcached
 
-COMPROMISE_MORALS = True
+COMPROMISE_MORALS = False
 
 
 #
@@ -193,12 +193,12 @@ def is_android(agent):
     return False
 
 
-@app.before_request
-def before_request():
-    ua = request.headers.get('User-Agent', '')
-    agent = httpagentparser.detect(ua)
-    g.is_ios = is_ios(agent)
-    g.is_android = is_android(agent)
+# @app.before_request
+# def before_request():
+#     ua = request.headers.get('User-Agent', '')
+#     agent = httpagentparser.detect(ua)
+#     g.is_ios = is_ios(agent)
+#     g.is_android = is_android(agent)
 
 
 #
@@ -207,10 +207,10 @@ def before_request():
 
 @app.route('/')
 def index():
-    if g.is_ios:
-        return ios()
-    elif g.is_android:
-        return android()
+    # if g.is_ios:
+    #     return ios()
+    # elif g.is_android:
+    #     return android()
     return redirect(WEB_URL)
 
 
