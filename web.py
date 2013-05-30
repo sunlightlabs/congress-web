@@ -207,11 +207,12 @@ def before_request():
 
 @app.route('/')
 def index():
-    if g.is_ios:
-        return ios()
-    elif g.is_android:
-        return android()
-    return redirect(WEB_URL)
+    # if g.is_ios:
+    #     return ios()
+    # elif g.is_android:
+    #     return android()
+    # return redirect(WEB_URL)
+    return render_template("index.html")
 
 
 @app.route('/android')
