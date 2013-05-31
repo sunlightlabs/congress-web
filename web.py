@@ -20,8 +20,9 @@ app = Flask(__name__)
 # app store URLs
 
 ANDROID_URL = "https://play.google.com/store/apps/details?id=com.sunlightlabs.android.congress&hl=en"
-IOS_URL = "http://itunes.com/apps/Sitegeist"
-WEB_URL = "http://sunlightfoundation.com/projects/congress-for-android/"
+# IOS_URL = "http://itunes.com/apps/Sunlight+Congress"
+IOS_URL = "https://itunes.apple.com/us/app/sunlight-congress/id653714985"
+WEB_URL = "http://congress.sunlightfoundation.com/"
 
 
 # load environment variables
@@ -207,11 +208,11 @@ def is_android(agent):
 
 @app.route('/')
 def index():
-    # if g.is_ios:
-    #     return ios()
-    # elif g.is_android:
-    #     return android()
-    # return redirect(WEB_URL)
+
+    host = request.headers.get('Host', '')
+    if host.lower() == 'cngr.es':
+        return redirect('http://congress.sunlightfoundation.com')
+
     return render_template("index.html")
 
 
