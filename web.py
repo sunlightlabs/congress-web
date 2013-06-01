@@ -22,7 +22,9 @@ app = Flask(__name__)
 ANDROID_URL = "https://play.google.com/store/apps/details?id=com.sunlightlabs.android.congress&hl=en"
 # IOS_URL = "http://itunes.com/apps/Sunlight+Congress"
 IOS_URL = "https://itunes.apple.com/us/app/sunlight-congress/id653714985"
+
 WEB_URL = "http://congress.sunlightfoundation.com/"
+CONTACT_URL = "http://sunlightfoundation.com/contact/?slot=Congress%20for%20Android%20and%20iOS"
 
 
 # load environment variables
@@ -226,6 +228,11 @@ def ios():
     return redirect(IOS_URL)
 
 
+@app.route('/contact')
+def contact():
+    return redirect(CONTACT_URL)
+
+
 #
 # legislators
 #
@@ -243,6 +250,7 @@ def legislator(bioguide_id):
 def opencongress_bill_type(bill_type):
     return 'h' if bill_type == 'hr' else bill_type
 
+
 def bill_url(bill_id):
     bill = load_bill(bill_id)
     provider = 'opencongress' if COMPROMISE_MORALS else 'govtrack'
@@ -259,6 +267,7 @@ def bill_id(bill_id):
 def bill_fulltext(bill_id):
     url = re.sub(r'/show/?$', '', bill_url(bill_id))
     return redirect('{0}/text'.format(url))
+
 
 #
 # votes
