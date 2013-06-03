@@ -2,17 +2,26 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        {% block meta %}{% endblock %}
-        <title>{% block title %}Congress for Android{% endblock %}</title>
+
+        <meta name="description" content="Learn more about your member of Congress, get in touch with them and see what they're up to. Follow the latest bills, see floor activity and explore votes from the palm of your hand.">
+
+        <meta property="og:title" content="Congress for Android and iOS">
+        <meta property="og:site_name" content="Sunlight Foundation">
+        <meta property="og:description" content="Learn more about your member of Congress, get in touch with them and see what they're up to. Follow the latest bills, see floor activity and explore votes from the palm of your hand.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="http://congress.sunlightfoundation.com/">
+        <meta property="og:image" content="http://congress.sunlightfoundation.com/static/img/icon_iphone.png">
+	    <meta property="og:locale" content="en_US">
+		<meta property="fb:admins" content="7812952">
+
+        <title>Congress for Android and iOS</title>
+
         <script src="//use.typekit.net/iev5bqv.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
 
 		<link type="text/css" rel="stylesheet" href="/static/css/bootstrap.css">
 		<link type="text/css" rel="stylesheet" href="/static/css/sfapp.css">
 		<link type="text/css" rel="stylesheet" href="/static/css/congress.css">
-		
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-		<script src="/static/js/switcher.js"></script>
     </head>
 	<body>
 		<div class="sf-header">
@@ -28,7 +37,7 @@
 				<div class="app-intro-border">
 					<div class="container">
 						<div class="row">
-							<div class="mobile-preview span5">	
+							<div class="mobile-preview span5">
 								<div id="iphone">
 									<div class="scroll">
 										<img src="/static/img/iphone_menu.jpg">
@@ -54,8 +63,8 @@
 							<div class="title span7">
 								<h2 class="custom">Congress</h2>
 								<h3>Now available on your iOS or Android device.</h3>
-								<a href="" class="android available"></a>
-								<a href="" class="ios available"></a>
+								<a href="/android" class="android available"></a>
+								<a href="/ios" class="ios available"></a>
 							</div>
 						</div>
 						<div class="row">
@@ -120,7 +129,7 @@
 								</blockquote>
 								<figcaption><a href="http://blog.richardposey.com/2010/05/congress-in-palm-of-my-hand.html">Richard Posey</a></figcaption>
 							</figure>
-							<a href="" class="android available"></a>
+							<a href="/android" class="android available"></a>
 						</div>
 						<div class="device ios span6">
 							<h2><img src="/static/img/icon_iphone.png">iPHONE</h2>
@@ -141,7 +150,7 @@
 								<li>Calendar of scheduled hearings</li>
 							</ul>
 							<h3>iOS Reviews Coming Soon! <small>Launched in June 2013</small></h3>
-							<a href="" class="ios available"></a>
+							<a href="/ios" class="ios available"></a>
 						</div>
 					</div>
 				</div>
@@ -163,8 +172,7 @@
 		            <div class="span6 signup span-divider">
 		                <h4>Like this Project and Want to Discover Others Like It?</h4>
 		                <span class="tip">Join the Sunlight Foundation's open government community to learn more</span>
-		                <form action="/subscribe/" method="post" id="sfapp-subscribe-form" class="form-inline">
-		                    <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='n7KUIRoAfnnYQgkgfbJgqwBFc8DTRpow' /></div>
+		                <form action="http://sunlightfoundation.com/mailinglist/subscribe/" method="post" id="sfapp-subscribe-form" class="form-inline">
 		                    <input type="hidden" name="response" value="json">
 		                    <input type="text" name="email" placeholder="your email address">
 		                    <input type="text" name="zipcode" placeholder="your zip code">
@@ -178,5 +186,63 @@
 		        </div>
 		    </div>
 		</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script src="/static/js/switcher.js"></script>
+		<script>
+			$(document).ready(function() {
+
+			    $('#sfapp-subscribe-form').submit(function(ev) {
+
+			        ev.preventDefault();
+
+			        var $form = $(this);
+
+			        var response_type = $form.find('input[name=response]').val(),
+			            email = $form.find('input[name=email]').val(),
+			            zipcode = $form.find('input[name=zipcode]').val(),
+			            url = $form.attr('action') || '/subscribe/';
+
+			        var data = {
+			            response: response_type,
+			            email: email,
+			            zipcode: zipcode
+			        };
+
+			        var params = {
+			          type: 'POST',
+			          url: url,
+			          data: data
+			        };
+
+			        if(url.match(/^http/) && !url.match(new RegExp('^https?:\/\/' + location.host.replace('.', '\\.')))){
+			          params['headers'] = {
+			            'Access-Control-Allow-Headers': 'x-requested-with, x-requested-by'
+			          };
+			        }
+
+			        $.ajax(params).done(function(resp) {
+			            var $p = $('<p>').text(resp.message + "!").hide();
+			            $form.slideUp('fast', function() {
+			                $form.after($p);
+			                $p.slideDown();
+			            });
+			        });
+
+			    });
+
+			});
+		</script>
+		<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-22821126-37']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
 	</body>
 </html>
