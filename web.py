@@ -233,6 +233,11 @@ def contact():
     return redirect(CONTACT_URL)
 
 
+@app.route('/urlschemes')
+def urlschemes():
+    return render_template("urlschemes.html")
+
+
 #
 # legislators
 #
