@@ -15,8 +15,8 @@ body {
 /*.container { padding-left: 10px; padding-right: 10px;}*/
 
 a:hover, a:active { outline: none; }
-a, a:active, a:visited { color: #c9a706; }
-a:hover { color: #827b78; }
+.sf-footerWrapper a, .sf-footerWrapper a:active, .sf-footerWrapper a:visited { color: #c9a706; }
+.sf-footerWrapper a:hover { color: #827b78; }
 
 fieldset { margin-bottom: 3em; }
 fieldset p { margin: 1em 0; }
@@ -121,7 +121,7 @@ h1, h2, h3, h4, legend { font-weight: normal; color: #635f5c; max-width: 680px;}
 h1 { font-family: Georgia, 'Times New Roman', Times, serif; font-size: 270%; line-height: 40px; margin-bottom: 30px;}
 h2 { margin-bottom: 30px; font-size: 260%; line-height: 38px; text-transform: uppercase;}
 h3, .h2, legend { font-family: Georgia, "Times New Roman", Times, serif; margin-bottom: 25px; font-size: 210%; line-height: 33px; text-transform: normal; }
-h4, .h3 { font-size: 170%; margin-bottom: 20px; line-height: 27px; text-transform: normal; font-family: Georgia, 'Times New Roman', Times, serif;}
+.sf-footerWrapper h4, .sf-footerWrapper .h3 { font-size: 170%; margin-bottom: 20px; line-height: 27px; text-transform: normal; font-family: Georgia, 'Times New Roman', Times, serif;}
 h5, .h4 { font-weight: bold; margin-bottom: 20px; font-size: 140%; line-height: 22px; text-transform: normal;}
 h6, .h5 { font-weight: bold; font-size: 125%; margin-bottom: 15px; text-transform: capitalize;}
 
@@ -229,7 +229,7 @@ input[type=checkbox] { width: 15px; }
 .container .content .checkbox input { width: 15px; margin-right: 10px; float: left; margin-top: 5px;}
 .normalList li { clear: both; }
 
-.sf-footerWrapper { background-color: #fafaf7; border-top: 1px solid #ece9e9; margin-top: 70px; padding-top: 50px; min-height: 220px;}
+.sf-footerWrapper { font-size: 13px; background-color: #fafaf7; border-top: 1px solid #ece9e9; margin-top: 70px; padding-top: 50px; min-height: 220px;}
 .sf-footer { color: #9f9a97;}
 .sf-footer h4 { color: #9f9a97; margin-bottom: 0.5em; }
 .sf-footer .tip { color: #9f9a97;}
