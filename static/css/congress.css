@@ -18,10 +18,9 @@ p, li{
 a, a:active, a:visited{
     color: #f2be08;
 }
-a:hover{
+a:hover {
     color: rgb(62, 192, 192);
     text-decoration: none;
-    border-bottom: 1px dotted rgb(62, 192, 192);
 }
 
 .congress-wrapper .container>img {
