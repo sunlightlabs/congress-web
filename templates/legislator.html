@@ -1,129 +1,283 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=560">
 
-{% block meta %}
+        <meta property="og:site_name" content="Congress for Android">
+        <meta property="og:title" content="{{ moc.title }}. {{ moc.first_name }} {% if moc.nickname %}'{{ moc.nickname }}' {% endif %}{{ moc.last_name }}{% if moc.name_suffix %} {{ moc.name_suffix }}{% endif %} ({{ moc.party }}-{{ moc.state }})">
+        <meta property="og:description" content="Find out more about {{ moc.title }}. {{ moc.last_name }} with Congress for Android.">
+        <meta property="og:type" content="profile">
+        <meta property="og:profile:first_name" content="{{ moc.first_name }}">
+        <meta property="og:profile:last_name" content="{{ moc.last_name }}">
+        <meta property="og:url" content="http://cngr.es/l/{{ moc.bioguide_id }}">
+        <meta property="og:image" content="http://assets.sunlightfoundation.com/moc/200x250/{{ moc.bioguide_id }}.jpg">
+        <meta property="og:locale" content="en_US">
+        <meta property="fb:admins" content="7812952">
 
-	<meta name="viewport" content="width=560">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:url" content="http://cngr.es/l/{{ moc.bioguide_id }}">
+        <meta name="twitter:title" content="{{ moc.title }}. {{ moc.first_name }} {% if moc.nickname %}'{{ moc.nickname }}' {% endif %}{{ moc.last_name }}{% if moc.name_suffix %} {{ moc.name_suffix }}{% endif %} ({{ moc.party }}-{{ moc.state }})">
+        <meta name="twitter:description" content="Find out more about {{ moc.title }}. {{ moc.last_name }} with Congress for Android.">
+        <meta name="twitter:image" content="http://assets.sunlightfoundation.com/moc/200x250/{{ moc.bioguide_id }}.jpg">
+        <meta name="twitter:site" content="@sunfoundation">
 
-	<meta property="og:site_name" content="Congress for Android">
-	<meta property="og:title" content="{{ moc.title }}. {{ moc.first_name }} {% if moc.nickname %}'{{ moc.nickname }}' {% endif %}{{ moc.last_name }}{% if moc.name_suffix %} {{ moc.name_suffix }}{% endif %} ({{ moc.party }}-{{ moc.state }})">
-	<meta property="og:description" content="Find out more about {{ moc.title }}. {{ moc.last_name }} with Congress for Android.">
-	<meta property="og:type" content="profile">
-	<meta property="og:profile:first_name" content="{{ moc.first_name }}">
-	<meta property="og:profile:last_name" content="{{ moc.last_name }}">
-	<meta property="og:url" content="http://cngr.es/l/{{ moc.bioguide_id }}">
-	<meta property="og:image" content="http://assets.sunlightfoundation.com/moc/200x250/{{ moc.bioguide_id }}.jpg">
-	<meta property="og:locale" content="en_US">
-	<meta property="fb:admins" content="7812952">
+        <title>{{ moc.title }}. {{ moc.first_name }} {% if moc.nickname %}'{{ moc.nickname }}' {% endif %}{{ moc.last_name }}{% if moc.name_suffix %} {{ moc.name_suffix }}{% endif %} ({{ moc.party }}-{{ moc.state }}) - Congress for Android and iOS</title>
 
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:url" content="http://cngr.es/l/{{ moc.bioguide_id }}">
-	<meta name="twitter:title" content="{{ moc.title }}. {{ moc.first_name }} {% if moc.nickname %}'{{ moc.nickname }}' {% endif %}{{ moc.last_name }}{% if moc.name_suffix %} {{ moc.name_suffix }}{% endif %} ({{ moc.party }}-{{ moc.state }})">
-	<meta name="twitter:description" content="Find out more about {{ moc.title }}. {{ moc.last_name }} with Congress for Android.">
-	<meta name="twitter:image" content="http://assets.sunlightfoundation.com/moc/200x250/{{ moc.bioguide_id }}.jpg">
-	<meta name="twitter:site" content="@sunfoundation">
+        <style>
 
-{% endblock %}
+        	a { color: #24c; }
 
-{% block title %}{{ moc.title }}. {{ moc.first_name }} {% if moc.nickname %}'{{ moc.nickname }}' {% endif %}{{ moc.last_name }}{% if moc.name_suffix %} {{ moc.name_suffix }}{% endif %} ({{ moc.party }}-{{ moc.state }}) - {{ super() }}{% endblock %}
+            body {
+                background-color: #f4f6ec;
+                color: #4E5B5D;
+                font-family: sans-serif;
+                font-size: 90%;
+            }
 
-{% block content %}
+            header {
+            	margin: 0px auto 20px;
+            	font-size: 90%;
+            	text-align: right;
+            	width: 500px;
+            }
 
-    <header>
-    	<p><span class="apptitle">Congress</span> by <a href="#" class="sflogo"><img src="/static/sflogo-127x75.png"></a></p>
-    </header>
+            header img { vertical-align: text-bottom; }
 
-    <div class="card">
+            header .apptitle {
+            	font-family: "karmina-sans", 'helvetica neue', helvetica, sans-serif;
+            	font-size: 160%;
+            	padding-right: 5px;
+            	text-transform: uppercase;
+            }
 
-	    {% if not moc.in_office %}
-	        <div class="alert">No longer in office</div>
-	    {% endif %}
+            header .sflogo {
+            	display: inline-block;
+            	margin: 0 0 0 2px;
+            	padding: 0;
+            	position: relative;
+            	top: 12px;
+            	height: 45px;
+            }
 
-	    <div class="vcard">
+            div.sf-header { margin-bottom: 20px; }
+            div.sf-header a { color: #4E5B5D; }
 
-	        <img class="photo" src="http://assets.sunlightfoundation.com/moc/200x250/{{ moc.bioguide_id }}.jpg">
+            .card {
+            	border: 1px solid #ccc;
+            	background-color: #fff;
+            	height: 320px;
+            	margin: 0 auto;
+            	padding: 10px;
+            	position: relative;
+            	width: 500px;
+            	-webkit-border-radius: 5px;
+            	   -moz-border-radius: 5px;
+            	     -o-border-radius: 5px;
+            	        border-radius: 5px;
+            	box-shadow: 0 0 5px #ddd;
+            }
 
-	        <h1>
-	            <a class="url fn n" href="{{ moc.website }}">
-	                <span class="honorific-prefix">{{ moc.title }}.</span>
-	                <span class="given-name">{{ moc.first_name }}</span>
-	                {% if moc.nickname %}
-	                    <span class="additional-name">{{ moc.nickname }}</span>
-	                {% endif %}
-	                <span class="family-name">{{ moc.last_name }}</span>
-	                {% if moc.name_suffix %}
-	                    <span class="honorific-suffix">{{ moc.name_suffix }}</span>
-	                {% endif %}
-	            </a>
-	        </h1>
+            .vcard { margin-left: 160px; }
 
-	        <div class="represents">
-		        <span class="party party-{{ moc.party|lower }}">{{ moc.party }}</span>
-		        <span class="state">{{ moc.state_name }}</span>
-		        {% if moc.district %}
-		            - <span class="congressional-district">District {{ moc.district }}</span>
-		        {% endif %}
-		    </div>
+            .vcard img.photo {
+            	background-color: #eee;
+            	border-top: 1px solid #ccc;
+            	border-left: 1px solid #ccc;
+            	width: 150px;
+            	top: -1px;
+            	left: -1px;
+            	padding-bottom: 153px;
+            	position: absolute;
+            	-webkit-border-radius: 5px 0 0 5px;
+            	   -moz-border-radius: 5px 0 0 5px;
+            	     -o-border-radius: 5px 0 0 5px;
+            	        border-radius: 5px 0 0 5px;
+           	}
 
-		    <dl>
-		    	<dt>Phone</dt>
-		    	<dd>
-	        		<a class="tel" href="tel:{{ moc.phone }}">{{ moc.phone }}</a>
-	        	</dd>
-		        {% if moc.fax %}
-		        	<dt>Fax</dt>
-		            <dd class="fax">{{ moc.fax }}</dd>
-		        {% endif %}
-	    	</dl>
+            .vcard h1 {
+            	margin: 5px 0 15px 0;
+                font-family: "prenton-condensed";
+                font-size: 200%;
+                font-weight: normal;
+            }
+            .vcard h1 a { color: #466; text-decoration: none; }
 
-	        <div class="adr">
-	            <span class="street-address">{{ moc.office }}</span>
-	            <span class="locality">Washington</span>,
-	            <abbr class="region" title="District of Columbia">DC</abbr>
-	            <span class="postal-code">20510</span>
-	        </div>
+            .vcard .additional-name:before { content: '"'; }
+            .vcard .additional-name:after { content: '"'; }
 
-	        <div class="social">
+            .vcard dl { font-size: 90%; line-height: 160%; margin-bottom: 10px; margin-top: 10px; }
+            .vcard dt {
+            	display: block;
+            	float: left;
+            	font-family: "prenton-condensed";
+            	font-size: 90%;
+            	text-transform: uppercase;
+            	width: 90px;
+            }
+            .vcard dd { margin-bottom: 5px; }
 
-			    {% if moc.twitter_id %}
-			        <a class="twitter" title="Twitter" href="https://twitter.com/{{ moc.twitter_id }}">twitter</a>
-			    {% endif %}
+            .vcard .party {
+            	background-color: #444;
+            	color: #fff;
+            	display: inline-block;
+            	margin-right: 5px;
+            	padding: 5px 7px 3px;
+            	text-align: center;
+            	width: 15px;
+            	-webkit-border-radius: 5px;
+            	   -moz-border-radius: 5px;
+            	     -o-border-radius: 5px;
+            	        border-radius: 5px;
+           	}
+            .vcard .party-d { background-color: #3379bf; }
+            .vcard .party-r { background-color: #cc333f; }
 
-			    {% if moc.facebook_id %}
-			        <a class="facebook" title="Facebook" href="https://www.facebook.com/{{ moc.facebook_id }}">facebook</a>
-			    {% endif %}
+            .vcard .adr { font-size: 90%; line-height: 130%; margin-top: 20px; }
+            .vcard .street-address { display: block; }
 
-			    {% if moc.youtube_id %}
-			        <a class="youtube" title="YouTube" href="http://www.youtube.com/{{ moc.youtube_id }}">youtube</a>
-			    {% endif %}
+            .vcard .social {
+            	font-size: 160%;
+            	margin-top: 20px;
+            }
+            .vcard .social a {
+            	display: block;
+            	float: left;
+            	margin-right: 10px;
+            	text-indent: -9999px;
+            	width: 32px;
+            	height: 32px;
+            }
+            .vcard .social a.twitter { background: url(/static/icons/twitter.png) top left no-repeat; }
+            .vcard .social a.facebook { background: url(/static/icons/facebook.png) top left no-repeat; }
+            .vcard .social a.youtube { background: url(/static/icons/youtube.png) top left no-repeat; }
 
-			    <div style="clear: both;"></div>
+            .profiles {
+            	clear: both;
+            	margin: 20px 0 0 0;
+            }
 
-			</div>
+            .app-stores { padding-left: 180px; }
+            .app-stores a.available { float: left; }
 
+            footer {
+            	margin: 30px auto 20px;
+            	text-align: center;
+            	width: 500px;
+            }
 
-			<div class="profiles">
+        </style>
+        <script src="//use.typekit.net/iev5bqv.js"></script>
+        <script>try{Typekit.load();}catch(e){}</script>
 
-				<dl>
-			    	{% if moc.govtrack_id %}
-						<dt>Votes</dt>
-						<dd>
-							<a href="http://www.opencongress.org/people/show/{{ moc.govtrack_id }}">OpenCongress</a>
-							and
-				        	<a href="http://www.govtrack.us/congress/members/cngres/{{ moc.govtrack_id }}">GovTrack.us</a>
-				        </dd>
-				    {% endif %}
-				    {% if moc.influenceexplorer_id %}
-			        	<dt>Fundraising</dt>
-			        	<dd>
-			        		<a href="http://influenceexplorer.com/entity/{{ moc.influenceexplorer_id }}/">Influence Explorer</a>
-			        	</dd>
-			        {% endif %}
-			    </dl>
+		<link type="text/css" rel="stylesheet" href="/static/css/bootstrap.css">
+		<link type="text/css" rel="stylesheet" href="/static/css/sfapp.css">
+		<link type="text/css" rel="stylesheet" href="/static/css/congress.css">
+    </head>
+    <body>
 
-			</div>
-
+    	<div class="sf-header">
+	        <header>
+	            <p><a href="http://congress.sunlightfoundation.com" class="apptitle">Congress</a> by <a href="#" class="sflogo"><img src="/static/sflogo-127x75.png"></a></p>
+	        </header>
 	    </div>
 
-	</div>
+        <div class="card">
 
-{% endblock %}
+            {% if not moc.in_office %}
+                <div class="alert">No longer in office</div>
+            {% endif %}
+
+            <div class="vcard">
+
+                <img class="photo" src="http://assets.sunlightfoundation.com/moc/200x250/{{ moc.bioguide_id }}.jpg">
+
+                <h1>
+                    <a class="url fn n" href="{{ moc.website }}">
+                        <span class="honorific-prefix">{{ moc.title }}.</span>
+                        <span class="given-name">{{ moc.first_name }}</span>
+                        {% if moc.nickname %}
+                            <span class="additional-name">{{ moc.nickname }}</span>
+                        {% endif %}
+                        <span class="family-name">{{ moc.last_name }}</span>
+                        {% if moc.name_suffix %}
+                            <span class="honorific-suffix">{{ moc.name_suffix }}</span>
+                        {% endif %}
+                    </a>
+                </h1>
+
+                <div class="represents">
+                    <span class="party party-{{ moc.party|lower }}">{{ moc.party }}</span>
+                    <span class="state">{{ moc.state_name }}</span>
+                    {% if moc.district %}
+                        - <span class="congressional-district">District {{ moc.district }}</span>
+                    {% endif %}
+                </div>
+
+                <dl>
+                    <dt>Phone</dt>
+                    <dd>
+                        <a class="tel" href="tel:{{ moc.phone }}">{{ moc.phone }}</a>
+                    </dd>
+                    {% if moc.fax %}
+                        <dt>Fax</dt>
+                        <dd class="fax">{{ moc.fax }}</dd>
+                    {% endif %}
+                </dl>
+
+                <div class="adr">
+                    <span class="street-address">{{ moc.office }}</span>
+                    <span class="locality">Washington</span>,
+                    <abbr class="region" title="District of Columbia">DC</abbr>
+                    <span class="postal-code">20510</span>
+                </div>
+
+                <div class="social">
+
+                    {% if moc.twitter_id %}
+                        <a class="twitter" title="Twitter" href="https://twitter.com/{{ moc.twitter_id }}">twitter</a>
+                    {% endif %}
+
+                    {% if moc.facebook_id %}
+                        <a class="facebook" title="Facebook" href="https://www.facebook.com/{{ moc.facebook_id }}">facebook</a>
+                    {% endif %}
+
+                    {% if moc.youtube_id %}
+                        <a class="youtube" title="YouTube" href="http://www.youtube.com/{{ moc.youtube_id }}">youtube</a>
+                    {% endif %}
+
+                    <div style="clear: both;"></div>
+
+                </div>
+
+
+                <div class="profiles">
+
+                    <dl>
+                        {% if moc.govtrack_id %}
+                            <dt>Votes</dt>
+                            <dd>
+                                <a href="http://www.opencongress.org/people/show/{{ moc.govtrack_id }}">OpenCongress</a>
+                                and
+                                <a href="http://www.govtrack.us/congress/members/cngres/{{ moc.govtrack_id }}">GovTrack.us</a>
+                            </dd>
+                        {% endif %}
+                        {% if moc.influenceexplorer_id %}
+                            <dt>Fundraising</dt>
+                            <dd>
+                                <a href="http://influenceexplorer.com/entity/{{ moc.influenceexplorer_id }}/">Influence Explorer</a>
+                            </dd>
+                        {% endif %}
+                    </dl>
+
+                </div>
+
+            </div>
+
+        </div>
+		<footer class="app-stores">
+			<a href="/android" class="android available"></a>
+			<a href="/ios" class="ios available"></a>
+		</footer>
+    </body>
+</html>
