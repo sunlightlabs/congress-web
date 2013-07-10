@@ -16,6 +16,8 @@
 
         <title>Congress for Android and iOS</title>
 
+        <script>var _sf_startpt=(new Date()).getTime()</script>
+
         <script src="//use.typekit.net/iev5bqv.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
 
@@ -259,6 +261,22 @@
 				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+		<script>
+			var _sf_async_config={uid:980,domain:"congress.sunlightfoundation.com",useCanonical:true};
+			(function(){
+			  function loadChartbeat() {
+			    window._sf_endpt=(new Date()).getTime();
+			    var e = document.createElement('script');
+			    e.setAttribute('language', 'javascript');
+			    e.setAttribute('type', 'text/javascript');
+			    e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
+			    document.body.appendChild(e);
+			  }
+			  var oldonload = window.onload;
+			  window.onload = (typeof window.onload != 'function') ?
+			     loadChartbeat : function() { oldonload(); loadChartbeat(); };
 			})();
 		</script>
 	</body>
