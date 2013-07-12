@@ -227,6 +227,21 @@ def ios():
     return redirect(IOS_URL)
 
 
+@app.route('/code')
+def code():
+    return redirect('https://github.com/sunlightlabs')
+
+
+@app.route('/code/android')
+def android_code():
+    return redirect('https://github.com/sunlightlabs/congress-android')
+
+
+@app.route('/code/ios')
+def io_code():
+    return redirect('https://github.com/sunlightlabs/congress-ios')
+
+
 @app.route('/contact')
 def contact():
     return redirect(CONTACT_URL)
