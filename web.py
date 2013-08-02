@@ -20,7 +20,7 @@ app = Flask(__name__)
 # app store URLs
 
 ANDROID_URL = "https://play.google.com/store/apps/details?id=com.sunlightlabs.android.congress&hl=en"
-IOS_URL = "http://appstore.com/congressbysunlightfoundation"
+IOS_URL = "https://itunes.apple.com/us/app/sunlight-congress/id653714985"
 
 WEB_URL = "http://congress.sunlightfoundation.com/"
 CONTACT_URL = "http://sunlightfoundation.com/contact/?slot=Congress%20for%20Android%20and%20iOS"
