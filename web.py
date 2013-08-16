@@ -46,6 +46,7 @@ except ImportError:
 BILL_TYPES = ("hr", "hres", "hjres", "hconres", "s", "sres", "sjres", "sconres")
 BILL_ID_RE = re.compile(r"^(?P<type>[a-z]+)(?P<number>\d+)-(?P<session>\d+)$")
 VOTE_ID_RE = re.compile(r"^(?P<chamber>[sh])(?P<number>\d+)-(?P<year>\d{4})$")
+COMMITTEE_ID_RE = re.compile(r"^(?P<code>[A-Z]{4})(?P<subcode>[0-9]{2})?$")
 
 # set up cache
 
@@ -286,6 +287,26 @@ def bill_id(bill_id):
 def bill_fulltext(bill_id):
     url = re.sub(r'/show/?$', '', bill_url(bill_id))
     return redirect('{0}/text'.format(url))
+
+
+#
+# committees
+#
+
+@app.route('/c/<committee_id>')
+def committee_id(committee_id):
+    match = COMMITTEE_ID_RE.match(committee_id)
+
+    if not match:
+        return redirect('/')
+
+    (code, subcode) = match.groups()
+
+    url = "http://www.govtrack.us/congress/committees/%s" % code
+    if subcode:
+        url = "%s/%s" % (url, subcode)
+
+    return redirect(url)
 
 
 #
