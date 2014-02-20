@@ -3,15 +3,60 @@ body {
     font-size: 16px;
     font-weight: 200;
 }
+
+/* Branding Bar Wrapper */
+
+.bb_wrapper {
+    position: relative;
+    margin-top: 0;
+
+    -webkit-transition: margin-top 200ms ease-out;
+    -moz-transition: margin-top 200ms ease-out;
+    -ms-transition: margin-top 0.3s ease-out;
+    -o-transition: margin-top 0.3s ease-out;
+    transition: margin-top 200ms ease-out;
+}
+
+.bb_wrapper.is-active { margin-top: 250px; }
+
+/* Branding Bar */
+
 .sf-header .container {
     position: relative;
 }
 .sf-header a.sf-logo {
-    position: absolute;
+/*    position: absolute;
     right: 0;
-    z-index: 10
+    z-index: 10*/
 }
- 
+
+.sf-header a.social {
+  color: #aaa;
+  font-size: 18px;
+  margin-right: 10px;
+  position: relative;
+  text-decoration: none;
+  top: 22px;
+}
+.sf-header .social span {color: inherit; transition: color 200ms ease-out;}
+.sf-header .social .icon-facebook:hover{ color: #3B5998; }
+.sf-header .social .icon-twitter:hover{ color: #00aced; }
+.sf-header .social .icon-gplus:hover{ color: #dd4b39; }
+
+#branding-bar-trigger {
+  color: #666;
+  cursor: pointer;
+  font-family: 'franklin-gothic-urw', helvetica, arial, sans-serif;
+  font-size: 13px;
+  position: relative;
+  text-decoration: none;
+  top: 22px;
+}
+
+#branding-bar-trigger:hover {
+  color: #000;
+}
+
 p, li{
     line-height: 1.7em;
 }
@@ -92,7 +137,7 @@ h2 em {
     margin-left: -2px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;   
+    -moz-box-sizing: border-box;
 }
 h3{
     color: #f3c41e;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bb_wrapper">
     <head>
         <meta charset="utf-8">
 
@@ -32,8 +32,10 @@
 		<link type="text/css" rel="stylesheet" href="/static/css/bootstrap.css">
 		<link type="text/css" rel="stylesheet" href="/static/css/sfapp.css">
 		<link type="text/css" rel="stylesheet" href="/static/css/congress.css">
+		<link type="text/css" rel="stylesheet" href="/static/css/branding-bar.css">
+		<link type="text/css" rel="stylesheet" href="/static/css/sunlighticons.css">
     </head>
-	<body>
+	<body >
 		<div id="fb-root"></div>
 		<script>(function(d, s, id) {
 		  var js, fjs = d.getElementsByTagName(s)[0];
@@ -42,207 +44,278 @@
 		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=398451833552688";
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));</script>
-		<div class="sf-header">
-			<div class="container">
-				<a class="sf-logo" href="http://www.sunlightfoundation.com">Sunlight Foundation</a>
+
+
+		    <div id="bb_panel">
+		        <button id="bb_close-panel">&times;</button>
+		        <div class="bb_panel-container">
+		            <div class="bb_about">
+		                <span class="bb_heading">About Sunlight Foundation</span>
+		                <p class="bb_description">Founded in 2006, the Sunlight Foundation is a nonpartisan nonprofit that uses cutting-edge technology and ideas to make government transparent and accountable. <a class="bb_link" href="http://sunlightfoundation.com/about">Learn more &raquo;</a></p>
+
+		                <div class="bb_email">
+		                    <span class="bb_heading">Stay informed about our work</span>
+		                    <form class="bb_email-form">
+		                        <input class="bb_input" type="email" placeholder="email address"/><input class="bb_input bb_input-zip" type="text" placeholder="zip code"/><button class="bb_sumbit" type="submit">Submit</button>
+		                    </form>
+		                </div>
+		            </div>
+
+		            <div class="bb_tools">
+		                <span class="bb_heading">
+		                    <span class="bb_tools-heading" id="bb_featured-tools-heading">Related Tools</span>
+		                    <span class="bb_tools-heading is-inactive" id="bb_more-tools-heading">More Tools</span>
+		                </span>
+
+		                <div id="bb_featured-tools" class="bb_tools-details">
+		                    <ul class="bb_tools-featured">
+		                        <li>
+		                            <a class="bb_tools-logo" href="http://opencongress.com">
+		                                <img src="/static/img/branding-bar/logo_opencongress.png" alt="Open Congress"/>
+		                            </a>
+		                            <p class="bb_description">
+		                                <a class="bb_link" href="http://opencongress.com">OpenCongress</a> allows anyone to follow legislation in Congress, from bill introduction to floor votes. Learn more about the issues you care about.
+		                            </p>
+		                        </li>
+		                        <li>
+		                            <a class="bb_tools-logo" href="http://influenceexplorer.com">
+		                                <img src="/static/img/branding-bar/logo_influence-explorer.png" alt="Influence Explorer"/>
+		                            </a>
+		                            <p class="bb_description">
+		                                <a class="bb_link" href="http://influenceexplorer.com">Influence Explorer</a> provides an overview of campaign finance, lobbying, earmark, contractor misconduct and federal spending data.
+		                            </p>
+		                        </li>
+		                    </ul>
+		            </div>
+		            <div id="bb_more-tools" class="bb_tools-details is-hidden">
+		                <ul class="bb_tools-list">
+		                    <li><a class="bb_link" href="http://www.opencongress.org">OpenCongress</a></li>
+		                    <li><a class="bb_link" href="http://influenceexplorer.com">Influence Explorer</a></li>
+		                    <li><a class="bb_link" href="http://openstates.org">Open States</a></li>
+		                    <li><a class="bb_link" href="https://scout.sunlightfoundation.com">Scout</a></li>
+		                </ul>
+
+		                <ul class="bb_tools-list">
+		                    <li><a class="bb_link" href="http://churnalism.sunlightfoundation.com">Churnalism</a></li>
+		                    <li><a class="bb_link" href="http://capitolwords.org">Capitol Words</a></li>
+		                    <li><a class="bb_link" href="http://politwoops.sunlightfoundation.com">Politwoops</a></li>
+		                    <li><a class="bb_link" href="http://adhawk.sunlightfoundation.com">Ad Hawk</a></li>
+		                </ul>
+
+		                <ul class="bb_tools-list">
+		                    <li><a class="bb_link" href="http://politicalpartytime.org">Party Time</a></li>
+		                    <li><a class="bb_link" href="https://scout.sunlightfoundation.com">Scout</a></li>
+		                    <li><a class="bb_link" href="http://docketwrench.sunlightfoundation.com">Docket Wrench</a></li>
+		                    <li><a class="bb_link" href="http://politicaladsleuth.com">Political Ad Sleuth</a></li>
+		                </ul>
+		            </div>
+		            </div>
+		        </div>
+
+		    </div>
+			<div class="sf-header">
+				<div class="container">
+		            <a class="social" href=""><span class="icon-facebook"></span></a>
+		            <a class="social" href=""><span class="icon-twitter"></span></a>
+		            <a class="social" href=""><span class="icon-gplus"></span></a>
+		            <a id="branding-bar-trigger">About Sunlight Foundation</a>
+					<a class="sf-logo" href="http://www.sunlightfoundation.com">Sunlight Foundation</a>
+				</div>
 			</div>
-		</div>
-		<div class="congress-wrapper">
-			<div class="container">
-				<img src="/static/img/bg_congress.png">
-			</div>
-			<div class="app-intro">
-				<div class="app-intro-border">
-					<div class="container">
-						<div class="row">
-							<div class="mobile-preview span5">
-								<div id="iphone">
-									<div class="scroll">
-										<img src="/static/img/iphone_legislator.jpg">
+			<div class="congress-wrapper">
+				<div class="container">
+					<img src="/static/img/bg_congress.png">
+				</div>
+				<div class="app-intro">
+					<div class="app-intro-border">
+						<div class="container">
+							<div class="row">
+								<div class="mobile-preview span5">
+									<div id="iphone">
+										<div class="scroll">
+											<img src="/static/img/iphone_legislator.jpg">
+										</div>
+									</div>
+									<div id="android">
+										<div class="scroll">
+											<img src="/static/img/android_main.png">
+										</div>
+									</div>
+									<div id="switcher" class="iphone">
+										<a id="switchButton3" class="active" href="/static/img/iphone_legislator.jpg">Page 1</a>
+										<a id="switchButton1" href="/static/img/iphone_menu.jpg">Page 2</a>
+										<a id="switchButton2" href="/static/img/iphone_list.jpg">Page 3</a>
+										<a id="switchButton4" href="/static/img/iphone_bill.jpg">Page 4</a>
+									</div>
+									<div id="switcher" class="android">
+										<a id="switchButton1" class="active" href="/static/img/android_main.png">Page 1</a>
+										<a id="switchButton2" href="/static/img/android_bill.png">Page 2</a>
+										<a id="switchButton3" href="/static/img/android_hearings.png">Page 3</a>
 									</div>
 								</div>
-								<div id="android">
-									<div class="scroll">
-										<img src="/static/img/android_main.png">
-									</div>
-								</div>
-								<div id="switcher" class="iphone">
-									<a id="switchButton3" class="active" href="/static/img/iphone_legislator.jpg">Page 1</a>
-									<a id="switchButton1" href="/static/img/iphone_menu.jpg">Page 2</a>
-									<a id="switchButton2" href="/static/img/iphone_list.jpg">Page 3</a>
-									<a id="switchButton4" href="/static/img/iphone_bill.jpg">Page 4</a>
-								</div>
-								<div id="switcher" class="android">
-									<a id="switchButton1" class="active" href="/static/img/android_main.png">Page 1</a>
-									<a id="switchButton2" href="/static/img/android_bill.png">Page 2</a>
-									<a id="switchButton3" href="/static/img/android_hearings.png">Page 3</a>
+								<div class="title span7">
+									<h2 class="custom">Congress</h2>
+									<h3>Now available on your iOS or Android device.</h3>
+									<a href="/android" class="android available"></a>
+									<a href="/ios" class="ios available"></a>
 								</div>
 							</div>
-							<div class="title span7">
-								<h2 class="custom">Congress</h2>
-								<h3>Now available on your iOS or Android device.</h3>
+							<div class="row">
+								<div class="social span1">
+									<div class="fb-like" data-href="https://www.facebook.com/congressapp" data-width="60" data-layout="box_count" data-show-faces="false" data-send="false"></div>
+									<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url="http://congress.sunlightfoundation.com" data-text="Keep tabs on Capitol Hill: Use @congress_app to follow bills, contact legislators and more." data-count="vertical">Tweet</a>
+								</div>
+								<div class="callout span4">
+									<p>
+										<em>Congress</em> is a free app that allows you to quickly get the latest information from Washington.
+									</p>
+								</div>
+								<div class="description span7">
+									<p>Learn more about your member of Congress, get in touch with them and see what they're up to. Follow the latest bills, see floor activity and explore votes from the palm of your hand.
+									</p>
+									<p>
+									The Congress apps are built on data from official sources via the <a href="http://sunlightlabs.github.io/congress/">Sunlight Congress API</a>. Both apps are open source and developers can play with the code on Github for both the <a href="https://github.com/sunlightlabs/congress-android">Android</a> and <a href="https://github.com/sunlightlabs/congress-ios">iOS</a> versions.
+									</p>
+									<p><a href="https://twitter.com/congress_app" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @congress_app</a></p>
+									<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="comparison">
+					<div class="container">
+						<h2 class="or"><span>Or</span></h2>
+						<div class="row">
+							<div class="device android span6">
+								<h2><img src="/static/img/icon_android.png">Android</h2>
+								<h3>Features</h3>
+								<ul>
+									<li>Read the latest bills and laws, and see how the votes were cast.</li>
+									<li>Find and call your members of Congress by using your phone's location or zipcode, as well as the lawmaker’s last name, a state or committee membership.</li>
+									<li>See what's happening on the House floor.</li>
+									<li>Keep on top of upcoming committee hearings.</li>
+									<li>Real-time notifications of votes, laws, floor activity and other congressional activities.</li>
+									<li>View your lawmakers' latest votes, committee memberships or a map of their district.</li>
+									<li>Read tweets and watch videos from lawmakers' Twitter and YouTube accounts or follow them in the news.</li>
+									<li>Easily share interesting bills across your social networks.</li>
+									<li>Add favorite lawmakers or bills to your dashboard or create shortcuts on your Android home screen.</li>
+								</ul>
+								<h3>Reviews</h3>
+								<figure>
+									<blockquote cite="http://androidandme.com/2010/05/applications/congress-for-android-social-activism-just-got-a-bit-more-mobile/">
+										<p>
+											Final Verdict: Yes, I’m skipping over the pros and cons mostly because I think this app is absolutely fantastic. If you’re an activist or are simply interested in political issues, you owe it to yourself and, dare I say it, your country, to download this app.
+										</p>
+									</blockquote>
+									<figcaption><a href="http://androidandme.com/2010/05/applications/congress-for-android-social-activism-just-got-a-bit-more-mobile/">Android and Me</a></figcaption>
+								</figure>
+								<figure>
+									<blockquote cite="http://www.androidtapp.com/congress/">
+										<p>
+											This application is very useful and informative, in today’s society understanding and staying aware of what our elected officials are doing is very vital. If you’re the type of person who is concerned or just curious to see what’s going on with Capitol Hill then this is the app for you!
+										</p>
+									</blockquote>
+									<figcaption><a href="http://www.androidtapp.com/congress/">Android Tapp</a></figcaption>
+								</figure>
+								<figure>
+									<blockquote cite="http://blog.richardposey.com/2010/05/congress-in-palm-of-my-hand.html">
+										<p>
+											With this kind of information in our hands, mobile applications like Congress could signal the beginning of a new era of citizen interest and participation in government, too. I hope so. Thanks, Sunlight Labs, for producing this.
+										</p>
+									</blockquote>
+									<figcaption><a href="http://blog.richardposey.com/2010/05/congress-in-palm-of-my-hand.html">Richard Posey</a></figcaption>
+								</figure>
 								<a href="/android" class="android available"></a>
+							</div>
+							<div class="device ios span6">
+								<h2><img src="/static/img/icon_iphone.png">iPHONE</h2>
+								<h3>Features</h3>
+								<ul>
+									<li>Find lawmakers in Congress, call them directly and connect with them on social media.</li>
+									<li>Discover new and active legislation.</li>
+									<li>Explore legislators for your location and others on an interactive map.</li>
+									<li>Follow bills and legislators for quick access and updates.</li>
+									<li>Review a legislator's latest votes and bill sponsorships.</li>
+									<li>See bill activity with vote breakdowns.</li>
+									<li>Committee listings</li>
+									<li>Get directions to a legislator's D.C. office.</li>
+								</ul>
+								<h4>Coming soon</h4>
+								<ul>
+									<li>Floor updates</li>
+									<li>Push notifications</li>
+									<li>Calendar of scheduled hearings</li>
+								</ul>
+								<h3>Reviews</h3>
+								<figure>
+									<blockquote cite="http://www.salon.com/2013/07/21/app_of_the_week_congress/">
+										<p>
+											There is nothing not to like about the Sunlight Foundation’s Congress App, now available on iOS as well as Android. It is, quite simply, the most painless way to keep up to date on a very painful topic: what Congress is up to. It’s open-source, steadily adding features, and fits in your pocket.
+										</p>
+									</blockquote>
+									<figcaption>Andrew Leonard - <a href="http://www.salon.com/2013/07/21/app_of_the_week_congress/">Salon</a></figcaption>
+								</figure>
+								<figure>
+									<blockquote cite="http://www.appolicious.com/tech/articles/13581-new-iphone-apps-worth-downloading-paltalk-video-chat-congress-by-sunlight-foundation-siegecraft-td">
+										<p>
+											Finding out what's going on with legislation and various elected officials is key to a free democracy, which is why Congress by Sunlight Foundation is an app worth snagging.
+										</p>
+									</blockquote>
+									<figcaption>Phil Hornshaw - <a href="http://www.appolicious.com/tech/articles/13581-new-iphone-apps-worth-downloading-paltalk-video-chat-congress-by-sunlight-foundation-siegecraft-td">Appolicious</a></figcaption>
+								</figure>
+								<figure>
+									<blockquote cite="http://www.radiomilwaukee.org/technically-yours-politics/technically-yours-keep-tabs-your-elected-official-congress-app">
+										<p>
+											Tools like these could help get citizens more informed and engage with the political system.
+										</p>
+									</blockquote>
+									<figcaption>Tarik Moody - <a href="http://www.radiomilwaukee.org/technically-yours-politics/technically-yours-keep-tabs-your-elected-official-congress-app">88nine Radio Milwaukee</a></figcaption>
+								</figure>
+								<figure>
+									<blockquote cite="https://twitter.com/LegalAB/status/354680669064015872">
+										<p>
+											Cool ap[p] for tracking activities of members of #Congress. Walk the halls with it.
+										</p>
+									</blockquote>
+									<figcaption>Associated Blogs Legal - <a href="https://twitter.com/LegalAB/status/354680669064015872">@LegalAB</a></figcaption>
+								</figure>
 								<a href="/ios" class="ios available"></a>
 							</div>
 						</div>
-						<div class="row">
-							<div class="social span1">
-								<div class="fb-like" data-href="https://www.facebook.com/congressapp" data-width="60" data-layout="box_count" data-show-faces="false" data-send="false"></div>
-								<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url="http://congress.sunlightfoundation.com" data-text="Keep tabs on Capitol Hill: Use @congress_app to follow bills, contact legislators and more." data-count="vertical">Tweet</a>
-							</div>
-							<div class="callout span4">
-								<p>
-									<em>Congress</em> is a free app that allows you to quickly get the latest information from Washington.
-								</p>
-							</div>
-							<div class="description span7">
-								<p>Learn more about your member of Congress, get in touch with them and see what they're up to. Follow the latest bills, see floor activity and explore votes from the palm of your hand.
-								</p>
-								<p>
-								The Congress apps are built on data from official sources via the <a href="http://sunlightlabs.github.io/congress/">Sunlight Congress API</a>. Both apps are open source and developers can play with the code on Github for both the <a href="https://github.com/sunlightlabs/congress-android">Android</a> and <a href="https://github.com/sunlightlabs/congress-ios">iOS</a> versions.
-								</p>
-								<p><a href="https://twitter.com/congress_app" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @congress_app</a></p>
-								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-							</div>
-						</div>
+					</div>
+				</div>
+				<div class="featured-on">
+					<div class="container">
+						<h2>Featured<em>On</em></h2>
+						<ul>
+							<li><a href="http://www.computerworld.com/s/article/9178832/10_free_Android_apps_for_staying_in_the_know" class="computerworld"><img src="/static/img/featured-on_computerworld.png"></a></li>
+							<li><a href="http://www.androidcentral.com/android-central-editors-app-picks-sept-2nd-2010" class="androidcentral"><img src="/static/img/featured-on_androidcentral.png"></a></li>
+							<li><a href="http://gizmodo.com/5597483/congress-app-puts-legislative-branch-on-your-android" class="gizmodo"><img src="/static/img/featured-on_gizmodo.png"></a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="comparison">
-				<div class="container">
-					<h2 class="or"><span>Or</span></h2>
-					<div class="row">
-						<div class="device android span6">
-							<h2><img src="/static/img/icon_android.png">Android</h2>
-							<h3>Features</h3>
-							<ul>
-								<li>Read the latest bills and laws, and see how the votes were cast.</li>
-								<li>Find and call your members of Congress by using your phone's location or zipcode, as well as the lawmaker’s last name, a state or committee membership.</li>
-								<li>See what's happening on the House floor.</li>
-								<li>Keep on top of upcoming committee hearings.</li>
-								<li>Real-time notifications of votes, laws, floor activity and other congressional activities.</li>
-								<li>View your lawmakers' latest votes, committee memberships or a map of their district.</li>
-								<li>Read tweets and watch videos from lawmakers' Twitter and YouTube accounts or follow them in the news.</li>
-								<li>Easily share interesting bills across your social networks.</li>
-								<li>Add favorite lawmakers or bills to your dashboard or create shortcuts on your Android home screen.</li>
-							</ul>
-							<h3>Reviews</h3>
-							<figure>
-								<blockquote cite="http://androidandme.com/2010/05/applications/congress-for-android-social-activism-just-got-a-bit-more-mobile/">
-									<p>
-										Final Verdict: Yes, I’m skipping over the pros and cons mostly because I think this app is absolutely fantastic. If you’re an activist or are simply interested in political issues, you owe it to yourself and, dare I say it, your country, to download this app.
-									</p>
-								</blockquote>
-								<figcaption><a href="http://androidandme.com/2010/05/applications/congress-for-android-social-activism-just-got-a-bit-more-mobile/">Android and Me</a></figcaption>
-							</figure>
-							<figure>
-								<blockquote cite="http://www.androidtapp.com/congress/">
-									<p>
-										This application is very useful and informative, in today’s society understanding and staying aware of what our elected officials are doing is very vital. If you’re the type of person who is concerned or just curious to see what’s going on with Capitol Hill then this is the app for you!
-									</p>
-								</blockquote>
-								<figcaption><a href="http://www.androidtapp.com/congress/">Android Tapp</a></figcaption>
-							</figure>
-							<figure>
-								<blockquote cite="http://blog.richardposey.com/2010/05/congress-in-palm-of-my-hand.html">
-									<p>
-										With this kind of information in our hands, mobile applications like Congress could signal the beginning of a new era of citizen interest and participation in government, too. I hope so. Thanks, Sunlight Labs, for producing this.
-									</p>
-								</blockquote>
-								<figcaption><a href="http://blog.richardposey.com/2010/05/congress-in-palm-of-my-hand.html">Richard Posey</a></figcaption>
-							</figure>
-							<a href="/android" class="android available"></a>
-						</div>
-						<div class="device ios span6">
-							<h2><img src="/static/img/icon_iphone.png">iPHONE</h2>
-							<h3>Features</h3>
-							<ul>
-								<li>Find lawmakers in Congress, call them directly and connect with them on social media.</li>
-								<li>Discover new and active legislation.</li>
-								<li>Explore legislators for your location and others on an interactive map.</li>
-								<li>Follow bills and legislators for quick access and updates.</li>
-								<li>Review a legislator's latest votes and bill sponsorships.</li>
-								<li>See bill activity with vote breakdowns.</li>
-								<li>Committee listings</li>
-								<li>Get directions to a legislator's D.C. office.</li>
-							</ul>
-							<h4>Coming soon</h4>
-							<ul>
-								<li>Floor updates</li>
-								<li>Push notifications</li>
-								<li>Calendar of scheduled hearings</li>
-							</ul>
-							<h3>Reviews</h3>
-							<figure>
-								<blockquote cite="http://www.salon.com/2013/07/21/app_of_the_week_congress/">
-									<p>
-										There is nothing not to like about the Sunlight Foundation’s Congress App, now available on iOS as well as Android. It is, quite simply, the most painless way to keep up to date on a very painful topic: what Congress is up to. It’s open-source, steadily adding features, and fits in your pocket.
-									</p>
-								</blockquote>
-								<figcaption>Andrew Leonard - <a href="http://www.salon.com/2013/07/21/app_of_the_week_congress/">Salon</a></figcaption>
-							</figure>
-							<figure>
-								<blockquote cite="http://www.appolicious.com/tech/articles/13581-new-iphone-apps-worth-downloading-paltalk-video-chat-congress-by-sunlight-foundation-siegecraft-td">
-									<p>
-										Finding out what's going on with legislation and various elected officials is key to a free democracy, which is why Congress by Sunlight Foundation is an app worth snagging.
-									</p>
-								</blockquote>
-								<figcaption>Phil Hornshaw - <a href="http://www.appolicious.com/tech/articles/13581-new-iphone-apps-worth-downloading-paltalk-video-chat-congress-by-sunlight-foundation-siegecraft-td">Appolicious</a></figcaption>
-							</figure>
-							<figure>
-								<blockquote cite="http://www.radiomilwaukee.org/technically-yours-politics/technically-yours-keep-tabs-your-elected-official-congress-app">
-									<p>
-										Tools like these could help get citizens more informed and engage with the political system.
-									</p>
-								</blockquote>
-								<figcaption>Tarik Moody - <a href="http://www.radiomilwaukee.org/technically-yours-politics/technically-yours-keep-tabs-your-elected-official-congress-app">88nine Radio Milwaukee</a></figcaption>
-							</figure>
-							<figure>
-								<blockquote cite="https://twitter.com/LegalAB/status/354680669064015872">
-									<p>
-										Cool ap[p] for tracking activities of members of #Congress. Walk the halls with it.
-									</p>
-								</blockquote>
-								<figcaption>Associated Blogs Legal - <a href="https://twitter.com/LegalAB/status/354680669064015872">@LegalAB</a></figcaption>
-							</figure>
-							<a href="/ios" class="ios available"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="featured-on">
-				<div class="container">
-					<h2>Featured<em>On</em></h2>
-					<ul>
-						<li><a href="http://www.computerworld.com/s/article/9178832/10_free_Android_apps_for_staying_in_the_know" class="computerworld"><img src="/static/img/featured-on_computerworld.png"></a></li>
-						<li><a href="http://www.androidcentral.com/android-central-editors-app-picks-sept-2nd-2010" class="androidcentral"><img src="/static/img/featured-on_androidcentral.png"></a></li>
-						<li><a href="http://gizmodo.com/5597483/congress-app-puts-legislative-branch-on-your-android" class="gizmodo"><img src="/static/img/featured-on_gizmodo.png"></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="sf-footerWrapper">
-		    <div class="sf-footer container">
-		        <div class="row">
-		            <div class="span6 signup span-divider">
-		                <h4>Like this Project and Want to Discover Others Like It?</h4>
-		                <span class="tip">Join the Sunlight Foundation's open government community to learn more</span>
-		                <form action="http://sunlightfoundation.com/mailinglist/subscribe/" method="post" id="sfapp-subscribe-form" class="form-inline">
-		                    <input type="hidden" name="response" value="json">
-		                    <input type="text" name="email" placeholder="your email address">
-		                    <input type="text" name="zipcode" placeholder="your zip code">
-		                    <button type="submit" class="btn btn-sunlight">Sign Up</button>
-		                </form>
-		            </div>
-		            <div class="span6 terms">
-		                <p>Our <a href="http://sunlightfoundation.com/legal/privacy/">privacy policy</a> details how personally identifiable information that is collected on our web sites is handled. Read our <a href="http://sunlightfoundation.com/legal/terms/">terms of service</a>.</p>
-		                <p>This work by <a href="http://sunlightfoundation.com">Sunlight Foundation</a>, unless <a href="http://sunlightfoundation.com/colophon/">otherwise noted</a>, is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 United States License</a>.</p>
-		            </div>
-		        </div>
-		    </div>
-		</div>
-
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+			<div class="sf-footerWrapper">
+			    <div class="sf-footer container">
+			        <div class="row">
+			            <div class="span6 signup span-divider">
+			                <h4>Like this Project and Want to Discover Others Like It?</h4>
+			                <span class="tip">Join the Sunlight Foundation's open government community to learn more</span>
+			                <form action="http://sunlightfoundation.com/mailinglist/subscribe/" method="post" id="sfapp-subscribe-form" class="form-inline">
+			                    <input type="hidden" name="response" value="json">
+			                    <input type="text" name="email" placeholder="your email address">
+			                    <input type="text" name="zipcode" placeholder="your zip code">
+			                    <button type="submit" class="btn btn-sunlight">Sign Up</button>
+			                </form>
+			            </div>
+			            <div class="span6 terms">
+			                <p>Our <a href="http://sunlightfoundation.com/legal/privacy/">privacy policy</a> details how personally identifiable information that is collected on our web sites is handled. Read our <a href="http://sunlightfoundation.com/legal/terms/">terms of service</a>.</p>
+			                <p>This work by <a href="http://sunlightfoundation.com">Sunlight Foundation</a>, unless <a href="http://sunlightfoundation.com/colophon/">otherwise noted</a>, is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 United States License</a>.</p>
+			            </div>
+			        </div>
+			    </div>
+			</div>		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<script src="/static/js/switcher.js"></script>
 		<script>
 			$(document).ready(function() {
@@ -316,5 +389,6 @@
 			     loadChartbeat : function() { oldonload(); loadChartbeat(); };
 			})();
 		</script>
+		<script src="/static/js/branding-bar.js"></script>
 	</body>
 </html>
