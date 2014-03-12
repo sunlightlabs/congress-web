@@ -76,8 +76,9 @@ a.branding-bar_trigger:hover {
   display: inline-block;
   font-size: 0;
   height: 30px;
-  width: 160px;
+  position: relative;
   vertical-align: middle;
+  width: 160px;
 }
 
 /* End Branding Bar Styles */
