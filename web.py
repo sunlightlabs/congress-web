@@ -225,6 +225,12 @@ def android():
 
 @app.route('/ios')
 def ios():
+    if 'u' in request.args:
+        url = request.args['u']
+        if re.match(r'^congress://[\w/-]+$', url):
+            ua = request.headers.get('User-Agent', '')
+            if 'iPhone' in ua or 'iPod' in ua or 'iPad' in ua:
+                return redirect(url)
     return redirect(IOS_URL)
 
 
