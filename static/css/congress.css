@@ -230,6 +230,14 @@ h2.or {
     text-align: center;
     vertical-align: bottom;
 }
+.device h2 span {
+    display: block;
+    text-align: right;
+    font-family: georgia;
+    font-style: italic;
+    font-size: 20px;
+    text-transform: none;
+}
 .device h2 img{
     padding-right: 10px;
 }
@@ -311,10 +319,13 @@ a.available:hover{
 a.available.android {
     background-position: center top;
 }
-.title a.available.android{
-    margin-right: 30px;
+.title a.available.android, .title a.available.ios{
+    margin-right: 20px;
 }
 a.available.ios {
+    background-position: center center;
+}
+a.available.kindle {
     background-position: center bottom;
 }
 .mobile-preview {
