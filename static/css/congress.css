@@ -308,10 +308,18 @@ a.available {
     float: left;
     opacity: .9;
 }
-.comparison a.available {
+.comparison .ios a.available {
     margin: 0 auto;
     opacity: .8;
 }
+.comparison .android a.available {
+    display: inline-block;
+    opacity: .8;
+}
+.comparison .android a.available.android {
+    margin-right: 45px;
+}
+
 a.available:hover{
     opacity: 1;
     border-bottom: none;
