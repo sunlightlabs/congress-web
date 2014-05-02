@@ -21,6 +21,7 @@ app = Flask(__name__)
 
 ANDROID_URL = "https://play.google.com/store/apps/details?id=com.sunlightlabs.android.congress&hl=en"
 IOS_URL = "https://itunes.apple.com/us/app/sunlight-congress/id653714985"
+KINDLE_URL = "http://www.amazon.com/Sunlight-Foundation-Congress/dp/B006WF2H2G/"
 
 WEB_URL = "http://congress.sunlightfoundation.com/"
 CONTACT_URL = "http://sunlightfoundation.com/contact/?slot=Congress%20for%20Android%20and%20iOS"
@@ -232,6 +233,11 @@ def ios():
             if 'iPhone' in ua or 'iPod' in ua or 'iPad' in ua:
                 return redirect(url)
     return redirect(IOS_URL)
+
+
+@app.route('/kindle')
+def kindle():
+    return redirect(KINDLE_URL)
 
 
 @app.route('/code')
