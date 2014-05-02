@@ -32,7 +32,8 @@
 		<link rel="stylesheet" href="/static/css/bootstrap.css">
 		<link rel="stylesheet" href="/static/css/sfapp.css">
 		<link rel="stylesheet" href="/static/css/congress.css">
-		<link rel="stylesheet" href="http://sf-icons.s3.amazonaws.com/css/sf-icons.css">
+		<link rel="stylesheet" href="https://sunlight-cdn.s3.amazonaws.com/brandingbar/0.3/css/brandingbar.css">
+		<link rel="stylesheet" href="http://sunlight-cdn.s3.amazonaws.com/sf-icons/0.2/css/sf-icons.css">
 	</head>
 	<body >
 		<div id="fb-root"></div>
@@ -47,9 +48,9 @@
 			<div class="sf-header branding-bar" data-property-id="congressapp" data-bb-brandingbar="true" data-bb-property-id="sunlightlabs-awesome">
 				<div class="branding-bar_container">
 					<div class="branding-bar_links">
-						<a class="social" href="https://www.facebook.com/sunlightfoundation"><span class="icon icon-facebook"></span></a>
-						<a class="social" href="https://twitter.com/sunfoundation"><span class="icon icon-twitter"></span></a>
-						<a class="social" href="https://plus.google.com/+sunlightfoundation"><span class="icon icon-google-plus"></span></a>
+						<a class="social" href="https://www.facebook.com/sunlightfoundation"><span class="sficon-facebook"></span></a>
+						<a class="social" href="https://twitter.com/sunfoundation"><span class="sficon-twitter"></span></a>
+						<a class="social" href="https://plus.google.com/+sunlightfoundation"><span class="sficon-google-plus"></span></a>
 						<a class="branding-bar_trigger" data-bb-toggle=".bb_wrapper" href="http://sunlightfoundation.com/about/">About Sunlight Foundation</a>
 					</div>
 					<div class="branding-bar_logo">
@@ -326,27 +327,9 @@
 				 loadChartbeat : function() { oldonload(); loadChartbeat(); };
 			})();
 		</script>
-
-		<script>
-		  (function () {
-			var h = document.getElementsByTagName('head')[0];
-			function loadit(tag, url) {
-			  var e = document.createElement(tag);
-			  if (tag === 'script') {
-				e.async = true;
-				e.src = url;
-			  } else if (tag == 'link') {
-				e.rel = 'stylesheet';
-				e.href = url;
-			  }
-			  h.appendChild(e);
-			}
-			loadit('link', '//s3.amazonaws.com/sunlight-cdn/brandingbar/0.1.1/css/brandingbar.css');
-			loadit('script', '//s3.amazonaws.com/sunlight-cdn/brandingbar/0.1.1/js/brandingbar.min.js.gz');
-		  })();
-		</script>
+		<script src="https://sunlight-cdn.s3.amazonaws.com/brandingbar/0.3/js/brandingbar.min.js.gz"></script>
 		<!--[if IE 8]>
-			<script src="http://sf-icons.s3.amazonaws.com/js/sf-icons.js"></script>
+		    <script src="http://sunlight-cdn.s3.amazonaws.com/sf-icons/0.2/js/sf-icons.js"></script>
 		<![endif]-->
 
 	</body>
