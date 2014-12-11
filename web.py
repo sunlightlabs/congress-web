@@ -85,7 +85,7 @@ def load_legislator(bioguide_id):
 
         # load from Sunlight API
 
-        url = "https://congress.api.sunlightfoundation.com/legislators"
+        url = "http://congress.api.sunlightfoundation.com/legislators"
         resp = http.get(url, params=params)
 
         if resp.status_code != 200:
@@ -130,7 +130,7 @@ def load_bill(bill_id):
 
         # load from Sunlight API
 
-        url = "https://congress.api.sunlightfoundation.com/bills"
+        url = "http://congress.api.sunlightfoundation.com/bills"
         resp = http.get(url, params=params)
 
         if resp.status_code != 200:
@@ -164,7 +164,7 @@ def load_vote(vote_id):
 
         # load from Sunlight API
 
-        url = "https://congress.api.sunlightfoundation.com/votes"
+        url = "http://congress.api.sunlightfoundation.com/votes"
         resp = http.get(url, params=params)
 
         if resp.status_code != 200:
